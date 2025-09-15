@@ -206,7 +206,7 @@ This Python code demonstrates how to use the LangChain library to process text. 
 
 Context Engineering (see Fig.1) is the systematic discipline of designing, constructing, and delivering a complete informational environment to an AI model prior to token generation. This methodology asserts that the quality of a model's output is less dependent on the model's architecture itself and more on the richness of the context provided.
 
-![Context Engineering](../assets/context_engineering.png)
+![Context Engineering](../assets/Context_Engineering.png)
 
 Fig.1: Context Engineering is the discipline of building a rich, comprehensive informational environment for an AI, as the quality of this context is a primary factor in enabling advanced Agentic performance.
 
