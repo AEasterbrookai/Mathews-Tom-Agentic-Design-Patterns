@@ -1,0 +1,717 @@
+<title>Legal AI with Andrew E Identity Routes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=IBM+Plex+Mono:wght@400;600&family=Atkinson+Hyperlegible:wght@400;700&family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: a consultancy review document. Neutral frame, three route chapters that each carry their own world, mockups at true proportions. */
+:root{
+  --paper:#F5F6F7; --surface:#FFFFFF; --ink:#121418; --muted:#555B64; --rule:#D9DCE1; --chip:#ECEEF1;
+  --f-display:"Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-text:"Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  /* Route 1 Evidence */
+  --r1-ink:#14161A; --r1-red:#C8321E; --r1-hi:#FFE14D; --r1-grey:#5F636B; --r1-paper:#FFFFFF; --r1-wash:#F1F1EE;
+  /* Route 2 Next Step */
+  --r2-euc:#0E4D3F; --r2-sig:#FFC531; --r2-sky:#D6ECF5; --r2-ink:#0B1F1A; --r2-coral:#C2452F; --r2-white:#FFFFFF;
+  /* Route 3 Resolve */
+  --r3-gr:#0D0E12; --r3-blue:#2B2BFF; --r3-lb:#8A8BFF; --r3-haze:#9A9DAB; --r3-mist:#EEF0F5; --r3-white:#FFFFFF;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#0F1114;--surface:#171A1F;--ink:#ECEDEF;--muted:#A4A9B1;--rule:#2B2F36;--chip:#22262C;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0F1114;--surface:#171A1F;--ink:#ECEDEF;--muted:#A4A9B1;--rule:#2B2F36;--chip:#22262C;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-text);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+section{padding-block:72px;border-top:1px solid var(--rule)}
+h1,h2,h3,h4{font-family:var(--f-display);margin:0;text-wrap:balance;line-height:1.08}
+h2{font-size:clamp(30px,4.4vw,52px);font-weight:900;letter-spacing:-.02em}
+h3{font-size:clamp(20px,2.2vw,26px);font-weight:700;letter-spacing:-.01em}
+h4{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+p{margin:0;max-width:66ch}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:clamp(18px,1.8vw,21px);line-height:1.5;max-width:60ch}
+.muted{color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:16px}
+.stack-lg{display:flex;flex-direction:column;gap:32px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+@media (max-width:860px){.grid2,.grid3{grid-template-columns:minmax(0,1fr)}}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:3px;background:var(--chip);color:var(--ink)}
+a{color:inherit;text-underline-offset:3px}
+:focus-visible{outline:3px solid #2B2BFF;outline-offset:3px}
+
+/* Cover */
+.cover{padding-block:56px 72px;border-top:0}
+.cover-top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.cover h1{font-size:clamp(44px,8.6vw,112px);font-weight:900;letter-spacing:-.035em;line-height:.95;margin-top:56px;max-width:12ch}
+.cover h1 .q{font-family:"Newsreader",Georgia,serif;font-weight:400;font-style:italic;letter-spacing:-.02em}
+.cover .lede{margin-top:28px}
+.cover-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:56px;border-top:1px solid var(--rule);padding-top:20px}
+.cover-meta div{display:flex;flex-direction:column;gap:4px;min-width:0}
+@media (max-width:700px){.cover-meta{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Diagnosis table */
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:14.5px}
+th,td{text-align:left;vertical-align:top;padding:14px 16px;border-bottom:1px solid var(--rule)}
+th{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:700;width:22%}
+.num{font-variant-numeric:tabular-nums}
+.keep{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.keep div{border-top:2px solid var(--ink);padding-top:10px;font-size:14.5px}
+@media (max-width:760px){.keep{grid-template-columns:minmax(0,1fr)}}
+.swatchrow{display:flex;gap:8px;flex-wrap:wrap}
+.sw{display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:11px;min-width:84px}
+.sw i{display:block;height:40px;border-radius:4px;border:1px solid var(--rule)}
+
+/* Insight */
+.insight{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;align-items:start}
+@media (max-width:860px){.insight{grid-template-columns:minmax(0,1fr)}}
+.quote{font-family:"Newsreader",Georgia,serif;font-size:clamp(30px,4.2vw,54px);line-height:1.08;letter-spacing:-.015em}
+.quote s{text-decoration-thickness:3px;text-decoration-color:var(--muted)}
+.labels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.labels div{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:4px}
+.labels b{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em}
+
+/* Spectrum */
+.spectrum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:var(--surface)}
+.spectrum a{display:flex;flex-direction:column;gap:10px;padding:24px;text-decoration:none;border-right:1px solid var(--rule);min-width:0}
+.spectrum a:last-child{border-right:0}
+.spectrum a:hover{background:var(--chip)}
+.spectrum .big{font-family:var(--f-display);font-size:28px;font-weight:900;letter-spacing:-.02em}
+@media (max-width:760px){.spectrum{grid-template-columns:minmax(0,1fr)}.spectrum a{border-right:0;border-bottom:1px solid var(--rule)}}
+
+/* Route chapter scaffolding */
+.route-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:end}
+.route-no{font-family:var(--f-display);font-weight:900;font-size:clamp(64px,10vw,140px);line-height:.8;letter-spacing:-.05em}
+@media (max-width:600px){.route-head{grid-template-columns:minmax(0,1fr)}}
+.hero-art{border-radius:8px;overflow:hidden;container-type:inline-size;border:1px solid var(--rule)}
+.board{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c7{grid-column:span 7}.c6{grid-column:span 6}.c5{grid-column:span 5}.c4{grid-column:span 4}
+@media (max-width:860px){.c8,.c7,.c6,.c5,.c4{grid-column:span 12}}
+.art{container-type:inline-size;border-radius:6px;overflow:hidden;position:relative;border:1px solid var(--rule);max-width:100%}
+.cap{font-family:var(--f-mono);font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:.04em}
+.spec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+@media (max-width:860px){.spec{grid-template-columns:minmax(0,1fr)}}
+.spec > div{display:flex;flex-direction:column;gap:10px;min-width:0}
+.pal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.pal div{border-radius:5px;padding:12px;min-height:84px;display:flex;flex-direction:column;justify-content:space-between;font-size:12px;font-family:var(--f-mono);border:1px solid var(--rule)}
+.pal b{font-family:var(--f-text);font-size:13px}
+.risk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:24px}
+@media (max-width:760px){.risk{grid-template-columns:minmax(0,1fr)}}
+ul.clean{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:15px}
+
+/* ============ ROUTE 1  EVIDENCE ============ */
+.r1-hero{background:var(--r1-paper);color:var(--r1-ink);padding:7cqw 6cqw;display:grid;grid-template-columns:1.3fr 1fr;gap:4cqw;align-items:center}
+.r1-lock{font-family:"Newsreader",Georgia,serif;line-height:.9}
+.r1-lock .l1{font-size:11cqw;font-weight:600;letter-spacing:-.03em;display:block}
+.r1-lock .l2{font-size:4.4cqw;font-weight:400;display:block;margin-top:1.4cqw;letter-spacing:-.01em}
+.br{color:var(--r1-red);font-weight:400}
+.r1-e{font-weight:600}
+.r1-note{font-family:"IBM Plex Mono",monospace;font-size:1.45cqw;line-height:1.5;color:var(--r1-grey);border-left:2px solid var(--r1-red);padding-left:1.6cqw;display:flex;flex-direction:column;gap:1.4cqw}
+.r1-note b{color:var(--r1-red);font-weight:600}
+@container (max-width:560px){.r1-hero{grid-template-columns:1fr}.r1-note{font-size:3cqw}}
+.r1-tagrow{display:flex;flex-wrap:wrap;gap:8px}
+.r1-tag{font-family:"IBM Plex Mono",monospace;font-size:13px;padding:6px 10px;border-radius:3px;background:var(--r1-paper);color:var(--r1-ink);border:1px solid #D7D7D2}
+.r1-tag .br{font-weight:600}
+/* r1 instagram */
+.r1-ig{aspect-ratio:1/1;background:var(--r1-paper);color:var(--r1-ink);padding:7cqw;display:flex;flex-direction:column;justify-content:space-between}
+.r1-ig .kick{font-family:"IBM Plex Mono",monospace;font-size:3.2cqw;color:var(--r1-red);letter-spacing:.02em}
+.r1-ig h5{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:8.4cqw;line-height:1.02;margin:0;letter-spacing:-.02em}
+.r1-ig .orig{font-family:"Newsreader",Georgia,serif;font-size:4.6cqw;line-height:1.35}
+.r1-ig mark{background:var(--r1-hi);color:var(--r1-ink);padding:0 .4cqw}
+.r1-ig .ai{font-family:"IBM Plex Mono",monospace;font-size:3.4cqw;color:var(--r1-grey)}
+.r1-ig .ai s{text-decoration-color:var(--r1-red);text-decoration-thickness:.5cqw}
+.r1-ig .foot{display:flex;justify-content:space-between;align-items:end;font-family:"IBM Plex Mono",monospace;font-size:2.8cqw;color:var(--r1-grey)}
+.r1-ig .foot .mk{font-family:"Newsreader",Georgia,serif;font-size:5.2cqw;color:var(--r1-ink);font-weight:600}
+/* r1 youtube */
+.r1-yt{aspect-ratio:16/9;background:var(--r1-wash);color:var(--r1-ink);display:grid;grid-template-columns:42% 1fr}
+.portrait{position:relative;background:repeating-linear-gradient(135deg,#d9d9d4 0 2px,#e6e6e1 2px 14px);display:flex;align-items:flex-end;justify-content:center}
+.portrait span{font-family:"IBM Plex Mono",monospace;font-size:2.2cqw;letter-spacing:.06em;background:rgba(255,255,255,.85);color:#333;padding:.6cqw 1.2cqw;margin-bottom:3cqw;text-transform:uppercase}
+.r1-yt .t{padding:5cqw 5cqw;display:flex;flex-direction:column;justify-content:center;gap:2cqw}
+.r1-yt h5{font-family:"Newsreader",Georgia,serif;font-weight:700;font-size:8cqw;line-height:.98;margin:0;letter-spacing:-.025em}
+.r1-yt .s{font-family:"IBM Plex Mono",monospace;font-size:2.6cqw;color:var(--r1-red)}
+/* r1 pack cover */
+.r1-pack{aspect-ratio:1/1.414;background:var(--r1-paper);color:var(--r1-ink);padding:8cqw;display:flex;flex-direction:column;justify-content:space-between}
+.r1-pack .mk{font-family:"Newsreader",Georgia,serif;font-size:5cqw;line-height:1}
+.r1-pack h5{font-family:"Newsreader",Georgia,serif;font-size:11cqw;font-weight:600;line-height:.98;letter-spacing:-.025em;margin:0}
+.r1-pack .rows{display:flex;flex-direction:column;gap:2.4cqw;font-family:"IBM Plex Mono",monospace;font-size:3.4cqw}
+.r1-pack .rows div{display:flex;justify-content:space-between;border-bottom:1px solid #DADAD5;padding-bottom:1.6cqw}
+.r1-pack .rows em{font-style:normal;color:var(--r1-grey)}
+/* r1 avatar */
+.av-row{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+.av{width:110px;height:110px;border-radius:50%;overflow:hidden;flex:none;position:relative}
+.av.sm{width:40px;height:40px}
+.r1-av{background:var(--r1-paper);border:1px solid #DADAD5;display:flex;align-items:center;justify-content:center;font-family:"Newsreader",Georgia,serif;font-size:44px;font-weight:600;color:var(--r1-ink)}
+.r1-av.sm{font-size:16px}
+.av.photo{background:repeating-linear-gradient(135deg,#cfd2d6 0 2px,#e1e3e6 2px 10px);display:flex;align-items:flex-end;justify-content:center;font-family:var(--f-mono);font-size:10px;color:#333;padding-bottom:18px}
+
+/* ============ ROUTE 2  NEXT STEP ============ */
+.r2-hero{background:var(--r2-euc);color:var(--r2-white);padding:6cqw;display:grid;grid-template-columns:1.2fr 1fr;gap:4cqw;align-items:center;font-family:"Atkinson Hyperlegible",Verdana,sans-serif}
+.r2-lock{display:flex;flex-direction:column;gap:2cqw}
+.r2-lock .l1{font-size:9.4cqw;font-weight:700;line-height:.95;letter-spacing:-.02em}
+.r2-lock .l2{font-size:4cqw;font-weight:400;color:var(--r2-sig)}
+.r2-fork{width:100%;height:auto;display:block}
+.r2-routes{display:flex;flex-direction:column;gap:1.8cqw;font-size:2.2cqw}
+.r2-routes div{display:flex;align-items:center;gap:1.4cqw}
+.r2-routes i{width:5cqw;height:1.1cqw;border-radius:1cqw;display:block;flex:none}
+@container (max-width:560px){.r2-hero{grid-template-columns:1fr}.r2-routes{font-size:4cqw}}
+.r2-ig{aspect-ratio:1/1;background:var(--r2-sky);color:var(--r2-ink);font-family:"Atkinson Hyperlegible",Verdana,sans-serif;display:flex;flex-direction:column}
+.r2-ig .top{background:var(--r2-euc);color:var(--r2-white);padding:5cqw 6cqw;display:flex;flex-direction:column;gap:1.6cqw}
+.r2-ig .top small{font-size:3cqw;color:var(--r2-sig);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.r2-ig .top h5{font-size:7cqw;line-height:1.05;margin:0;font-weight:700}
+.r2-ig ol{list-style:none;margin:0;padding:5cqw 6cqw;display:flex;flex-direction:column;gap:3cqw;flex:1;justify-content:center}
+.r2-ig li{display:flex;gap:3cqw;align-items:center;font-size:5.2cqw;font-weight:700;line-height:1.1}
+.r2-ig li b{flex:none;width:9cqw;height:9cqw;border-radius:50%;background:var(--r2-sig);color:var(--r2-ink);display:flex;align-items:center;justify-content:center;font-size:5cqw}
+.r2-ig .foot{padding:0 6cqw 4.5cqw;font-size:2.8cqw;display:flex;justify-content:space-between}
+.r2-yt{aspect-ratio:16/9;background:var(--r2-sig);color:var(--r2-ink);display:grid;grid-template-columns:1fr 40%;font-family:"Atkinson Hyperlegible",Verdana,sans-serif}
+.r2-yt .t{padding:5cqw;display:flex;flex-direction:column;justify-content:center;gap:2.4cqw}
+.r2-yt small{font-size:2.8cqw;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.r2-yt h5{font-size:7.6cqw;line-height:.98;margin:0;font-weight:700;letter-spacing:-.02em}
+.r2-yt .arrow{font-size:9cqw;line-height:1;font-weight:700}
+.r2-yt .portrait{background:repeating-linear-gradient(135deg,#0c4436 0 2px,#125a4a 2px 14px)}
+.r2-pack{aspect-ratio:1/1.414;background:var(--r2-white);color:var(--r2-ink);font-family:"Atkinson Hyperlegible",Verdana,sans-serif;display:flex;flex-direction:column;justify-content:space-between;padding:8cqw;border-top:6cqw solid var(--r2-euc)}
+.r2-pack h5{font-size:10.4cqw;line-height:1;margin:0;font-weight:700;letter-spacing:-.02em}
+.r2-pack .map{width:100%;height:auto}
+.r2-pack .foot{font-size:3.2cqw;display:flex;justify-content:space-between;color:var(--r2-euc);font-weight:700}
+.r2-av{background:var(--r2-euc);display:flex;align-items:center;justify-content:center}
+
+/* ============ ROUTE 3  RESOLVE ============ */
+.r3-hero{background:var(--r3-white);color:var(--r3-gr);padding:6cqw;display:flex;flex-direction:column;gap:3cqw;font-family:"Archivo","Arial Narrow",sans-serif}
+.r3-lock{font-stretch:125%;font-weight:900;font-size:13.4cqw;line-height:.86;letter-spacing:-.02em;display:flex;gap:3cqw;flex-wrap:wrap;align-items:baseline}
+.r3-lock .ai{color:var(--r3-blue);animation:resolve 6s cubic-bezier(.2,.7,.1,1) infinite}
+.r3-sub{display:flex;justify-content:space-between;gap:2cqw;align-items:end;flex-wrap:wrap}
+.r3-sub .w{font-stretch:100%;font-weight:500;font-size:3.6cqw}
+.r3-meter{font-family:"JetBrains Mono",monospace;font-size:1.5cqw;display:grid;grid-template-columns:auto 1fr;gap:.6cqw 1.6cqw;align-items:center;min-width:34cqw}
+.r3-meter .bar{height:.7cqw;background:var(--r3-mist);position:relative;overflow:hidden}
+.r3-meter .bar i{position:absolute;inset:0 auto 0 0;background:var(--r3-gr)}
+.r3-meter .bar.acc i{background:var(--r3-blue);animation:fill 6s cubic-bezier(.2,.7,.1,1) infinite}
+@keyframes resolve{0%{filter:blur(2.2cqw);opacity:.55}8%{filter:blur(2.2cqw);opacity:.55}38%{filter:blur(0);opacity:1}100%{filter:blur(0);opacity:1}}
+@keyframes fill{0%,8%{width:12%}38%,100%{width:88%}}
+@media (prefers-reduced-motion:reduce){.r3-lock .ai,.r3-meter .bar.acc i{animation:none}.r3-meter .bar.acc i{width:88%}}
+.r3-ig{aspect-ratio:1/1;background:var(--r3-gr);color:var(--r3-white);padding:6.5cqw;display:flex;flex-direction:column;justify-content:space-between;font-family:"Archivo","Arial Narrow",sans-serif}
+.r3-ig .mono{font-family:"JetBrains Mono",monospace;font-size:2.8cqw;color:var(--r3-lb);letter-spacing:.04em}
+.r3-ig .blur{font-size:4.6cqw;line-height:1.3;filter:blur(.55cqw);color:#c9cbd6;user-select:none}
+.r3-ig .sharp{font-stretch:112%;font-weight:800;font-size:7.4cqw;line-height:1.02;letter-spacing:-.01em}
+.r3-ig .sharp u{text-decoration:none;box-shadow:inset 0 -1.2cqw 0 var(--r3-blue)}
+.r3-ig .row{display:flex;justify-content:space-between;align-items:end}
+.r3-ig .mk{font-stretch:125%;font-weight:900;font-size:4.6cqw}
+.r3-ig .mk span{color:var(--r3-lb)}
+.r3-yt{aspect-ratio:16/9;background:var(--r3-white);color:var(--r3-gr);display:grid;grid-template-columns:1fr 38%;font-family:"Archivo","Arial Narrow",sans-serif}
+.r3-yt .t{padding:4.5cqw;display:flex;flex-direction:column;justify-content:center;gap:1cqw}
+.r3-yt .a{font-stretch:125%;font-weight:900;font-size:9cqw;line-height:.9;filter:blur(.7cqw);color:#7d8090}
+.r3-yt .b{font-stretch:125%;font-weight:900;font-size:9cqw;line-height:.9;color:var(--r3-blue)}
+.r3-yt .m{font-family:"JetBrains Mono",monospace;font-size:2.2cqw;margin-top:1.6cqw}
+.r3-yt .portrait{background:repeating-linear-gradient(135deg,#d4d6de 0 2px,#e4e6ec 2px 14px)}
+.r3-yt .portrait::after{content:"";position:absolute;inset:14% 16%;--c:var(--r3-blue);--t:.6cqw;--l:22%;background:
+linear-gradient(var(--c),var(--c)) left top/var(--l) var(--t) no-repeat,linear-gradient(var(--c),var(--c)) left top/var(--t) var(--l) no-repeat,
+linear-gradient(var(--c),var(--c)) right top/var(--l) var(--t) no-repeat,linear-gradient(var(--c),var(--c)) right top/var(--t) var(--l) no-repeat,
+linear-gradient(var(--c),var(--c)) left bottom/var(--l) var(--t) no-repeat,linear-gradient(var(--c),var(--c)) left bottom/var(--t) var(--l) no-repeat,
+linear-gradient(var(--c),var(--c)) right bottom/var(--l) var(--t) no-repeat,linear-gradient(var(--c),var(--c)) right bottom/var(--t) var(--l) no-repeat}
+.r3-pack{aspect-ratio:1/1.414;background:var(--r3-mist);color:var(--r3-gr);padding:8cqw;display:flex;flex-direction:column;justify-content:space-between;font-family:"Archivo","Arial Narrow",sans-serif}
+.r3-pack .mono{font-family:"JetBrains Mono",monospace;font-size:3cqw}
+.r3-pack h5{font-stretch:125%;font-weight:900;font-size:12cqw;line-height:.88;margin:0;letter-spacing:-.02em}
+.r3-pack h5 span{display:block;filter:blur(1cqw);color:#8b8ea0}
+.r3-pack .line{height:1.4cqw;background:var(--r3-blue);width:40%}
+.r3-av{background:var(--r3-gr);display:flex;align-items:center;justify-content:center;font-family:"Archivo",sans-serif;font-stretch:125%;font-weight:900;color:var(--r3-lb);font-size:30px}
+.r3-av.sm{font-size:11px}
+
+/* Scorecard */
+.score td{vertical-align:middle}
+.dots{display:inline-flex;gap:4px}
+.dots i{width:10px;height:10px;border-radius:50%;background:var(--rule);display:block}
+.dots i.on{background:var(--ink)}
+.rec{background:var(--ink);color:var(--paper);border-radius:8px;padding:40px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px}
+.rec .eyebrow{color:var(--paper);opacity:.7}
+.rec h3{font-size:clamp(26px,3vw,38px);font-weight:900}
+@media (max-width:860px){.rec{grid-template-columns:minmax(0,1fr);padding:28px}}
+ol.steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:12px}
+ol.steps li{padding-left:4px}
+.sources{font-size:13.5px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.sources li{max-width:none}
+footer{padding-block:40px;border-top:1px solid var(--rule);font-size:13px;color:var(--muted)}
+</style>
+
+<div class="wrap">
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-top">
+    <span class="eyebrow">Brand identity review / Three routes</span>
+    <span class="eyebrow">Approach informed by Wolff Olins practice</span>
+  </div>
+  <h1>A brand people can <span class="q">check.</span></h1>
+  <p class="lede">The current identity documents are careful and well researched, but the design is generic. Navy, a soft blue, a sans-serif wordmark with an underline: it could belong to any law firm or AI start-up. This review keeps the strategy, finds the idea buried inside it, and builds three different identity routes from that idea.</p>
+  <div class="cover-meta">
+    <div><span class="eyebrow">Client</span><span>Legal AI with Andrew E</span></div>
+    <div><span class="eyebrow">Founder</span><span>Andrew Easterbrook</span></div>
+    <div><span class="eyebrow">Date</span><span>8 November 2026</span></div>
+    <div><span class="eyebrow">Status</span><span>Creative routes, not final artwork</span></div>
+  </div>
+</section>
+
+<!-- DIAGNOSIS -->
+<section id="diagnosis">
+  <div class="stack-lg">
+    <div class="stack">
+      <span class="eyebrow">01 / Diagnosis</span>
+      <h2>Good strategy. Generic design.</h2>
+      <p class="lede">I reviewed four documents: the Five Palette edition (14 pages), the Colour Brand Identity Report (9 pages), the Research and Platform Foundation report and the Social Media Strategy 2026. Each point below is drawn directly from those files.</p>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Finding</th><th>Evidence in the documents</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td>There is no brand idea</td><td>The four qualities are credibility, independence, approachability and practicality. These are adjectives, not an idea. Swap in any legal tech consultancy's name and every page still works.</td><td>Without an idea, design decisions come down to taste. That is why the documents end up comparing palettes rather than concepts.</td></tr>
+          <tr><td>It looks like everyone else in law and in AI</td><td>Four of the five palettes are navy or graphite with a blue accent. Navy signals law firm. Blue signals tech. Stacking both doubles the cliché.</td><td>Followers will not remember the brand as distinct. The face does all the work, and the system adds nothing.</td></tr>
+          <tr><td>The documents contradict each other</td><td>Five Palette edition: navy #0B1730 with cobalt #4F7FE8. Identity Report: navy #152E3E, ivory, turquoise #54CBD2, amber #EAA765, Manrope and Source Sans 3. Social Strategy: navy, off-white, teal and gold. All three are dated 8 November 2026.</td><td>Three systems on the same day means nothing is decided. Whoever builds the templates will pick one at random.</td></tr>
+          <tr><td>The accent colours fail text contrast</td><td class="num">Measured against white: cobalt 3.80:1, steel 3.71:1, champagne 2.76:1, ice blue 2.11:1, amber 2.06:1, turquoise 1.94:1. WCAG 2.2 requires 4.5:1 for normal-size text.</td><td>For an access-to-justice brand whose audience includes people with low vision or limited literacy, this is a substantive problem, not just a matter of looks.</td></tr>
+          <tr><td>The "three directions" are one direction</td><td>On page 4 of both PDFs, routes A, B and C use the same wordmark, avatar icon and layout. Only the tile colour and the description change.</td><td>The client is asked to choose between paragraphs and tints, not designs.</td></tr>
+          <tr><td>The colour rationale is arbitrary</td><td>The matrix maps a Hormozi lens to graphite, a Bartlett lens to steel and a Vaynerchuk lens to cobalt. The 85 / 12 / 3 per cent split is called a "planning target" with no basis given.</td><td>It looks rigorous but does not follow from the strategy. Borrowed celebrity frames also add a perceived-endorsement risk, which the documents have to disclaim repeatedly.</td></tr>
+          <tr><td>It reads as unfinished</td><td>Section numbers restart at 05 on page 11, straight after 09 on page 10. Generic user-icon placeholders stand in for the portrait. The wordmark is typed text with a short rule under it.</td><td>These are the signals that make a document read as machine-generated.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="stack">
+      <h4>Keep these decisions</h4>
+      <div class="keep">
+        <div><b>Hybrid, portrait-led social.</b> The rationale is evidence-based and the platform rules support it.</div>
+        <div><b>Separate product brands.</b> Family Law AI Assistant and Alexia stay distinct and disclosed.</div>
+        <div><b>The avoid list.</b> No scales of justice, no robot heads, no circuit boards.</div>
+        <div><b>The descriptor.</b> "Practical AI for Australian legal matters." It is clear, so it stays as a descriptor, not the idea.</div>
+        <div><b>Claims discipline.</b> No outcome promises, and credentials are verified before they are published.</div>
+        <div><b>Real-world testing.</b> Test with information seekers and lawyers, and check trade marks first.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHT -->
+<section id="insight">
+  <div class="insight">
+    <div class="stack">
+      <span class="eyebrow">02 / The idea was already in the documents</span>
+      <p class="quote">"Confidence is not the same as accuracy."</p>
+      <p class="muted">From the channel trailer script in the Social Media Strategy, section 13.</p>
+      <p class="lede">This line is the brand. Everything in the research report points the same way. The real enemy is a fluent answer that nobody has checked. The skill Andrew teaches is verification: keep the original, mark what is uncertain, and know whether a source actually supports the point. The identity should make that act of checking visible in every asset.</p>
+    </div>
+    <div class="stack">
+      <h4>The method, as written in the foundation report</h4>
+      <div class="labels">
+        <div><b>FACT</b><span class="muted">Observable, with a source location.</span></div>
+        <div><b>ALLEGATION</b><span class="muted">Someone's claim, attributed to them.</span></div>
+        <div><b>INFERENCE</b><span class="muted">A reasoned reading, labelled as one.</span></div>
+        <div><b>UNKNOWN</b><span class="muted">Missing information stays missing.</span></div>
+      </div>
+      <p class="muted">Plus two audiences: people with a lawyer and people without one, and a third path for limited help. Each route below takes this method and expresses it differently.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPECTRUM -->
+<section id="routes">
+  <div class="stack-lg">
+    <div class="stack">
+      <span class="eyebrow">03 / Three routes</span>
+      <h2>One idea, three different brands.</h2>
+      <p class="lede">The routes sit at three points on a real spectrum: authority, access and provocation. They match the three audience territories in the original documents, but each one now has an idea, an ownable asset and a system.</p>
+    </div>
+    <div class="spectrum">
+      <a href="#route-1"><span class="eyebrow">Route 1 / Authority</span><span class="big">[E] Evidence</span><span class="muted">Every claim gets a bracket. A citation becomes the logo.</span></a>
+      <a href="#route-2"><span class="eyebrow">Route 2 / Access</span><span class="big">Next Step</span><span class="muted">A wayfinding system for people who arrive with a problem, not a legal category.</span></a>
+      <a href="#route-3"><span class="eyebrow">Route 3 / Provocation</span><span class="big">Resolve</span><span class="muted">Fluent AI text is blurred. Checked text comes into focus.</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ROUTE 1 -->
+<section id="route-1">
+  <div class="stack-lg">
+    <div class="route-head">
+      <div class="route-no" style="font-family:'Newsreader',Georgia,serif;font-weight:600"><span style="color:var(--r1-red)">[</span>1<span style="color:var(--r1-red)">]</span></div>
+      <div class="stack">
+        <span class="eyebrow">Route 1 / Authority</span>
+        <h2>[E] Evidence</h2>
+        <p class="lede"><b>Idea: every claim gets a bracket.</b> Lawyers use square brackets to pinpoint a paragraph in a judgment, as in [95], and editors use them to mark an insertion. Here the E in Andrew E becomes a citation mark: [E] for Evidence. It works as a quiet double meaning. The name still stands for Easterbrook.</p>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="r1-hero">
+        <div class="r1-lock" aria-label="Legal AI with Andrew E">
+          <span class="l1">Legal AI</span>
+          <span class="l2">with Andrew <span class="br">[</span><span class="r1-e">E</span><span class="br">]</span></span>
+        </div>
+        <div class="r1-note">
+          <span><b>[E]</b> Signature asset. A citation bracket that frames anything checked.</span>
+          <span><b>Serif</b> Newsreader, drawn for reading-heavy publishing. It suggests a law report, not a law firm.</span>
+          <span><b>Red</b> Used only for marking up: the editor's pen, never decoration.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack">
+      <h4>The bracket system</h4>
+      <p class="muted">The four labels from Andrew's method become brand furniture. They appear on screen captures, chronologies, thumbnails and the Starter Pack. Anyone can type them in Canva, Word or a caption, so the system costs nothing to run.</p>
+      <div class="r1-tagrow">
+        <span class="r1-tag"><span class="br">[</span>FACT<span class="br">]</span></span>
+        <span class="r1-tag"><span class="br">[</span>ALLEGATION<span class="br">]</span></span>
+        <span class="r1-tag"><span class="br">[</span>INFERENCE<span class="br">]</span></span>
+        <span class="r1-tag"><span class="br">[</span>UNKNOWN<span class="br">]</span></span>
+        <span class="r1-tag"><span class="br">[</span>UNCHECKED<span class="br">]</span></span>
+        <span class="r1-tag"><span class="br">[</span>CHECKED 08.11.26<span class="br">]</span></span>
+      </div>
+    </div>
+
+    <div class="board">
+      <div class="c5">
+        <div class="art"><div class="r1-ig">
+          <span class="kick">[Prompt, then prove]</span>
+          <h5>AI turned "I have not checked" into "payment made."</h5>
+          <div class="stack" style="gap:2cqw">
+            <span class="orig">"I understand the payment was made, <mark>but I have not checked the account.</mark>"</span>
+            <span class="ai">AI summary: <s>Payment made.</s> <span class="br">[UNKNOWN]</span></span>
+          </div>
+          <div class="foot"><span>Hypothetical teaching example</span><span class="mk">[E]</span></div>
+        </div></div>
+        <p class="cap">Instagram post, 1080 x 1080. The example comes from the foundation report, section 4.</p>
+      </div>
+      <div class="c7">
+        <div class="art"><div class="r1-yt">
+          <div class="portrait"><span>Andrew's real portrait</span></div>
+          <div class="t">
+            <span class="s">[AI Legal Reality Check]</span>
+            <h5>Real citation. <span class="br">[</span>Wrong<span class="br">]</span> argument.</h5>
+          </div>
+        </div></div>
+        <p class="cap">YouTube thumbnail, 1280 x 720. The real photograph is always used. The bracket points to the issue.</p>
+        <div class="av-row" style="margin-top:20px">
+          <div class="av photo">PORTRAIT</div>
+          <div class="av r1-av">[E]</div>
+          <div class="av sm r1-av">[E]</div>
+          <p class="muted" style="font-size:14px;max-width:34ch">Personal profiles use the clean portrait, as the original research recommended. [E] is used for the LinkedIn company page, favicon and watermark.</p>
+        </div>
+      </div>
+      <div class="c4">
+        <div class="art"><div class="r1-pack">
+          <span class="mk">Legal AI <span class="br">[</span>E<span class="br">]</span></span>
+          <h5>Legal Preparation Starter Pack</h5>
+          <div class="rows">
+            <div><span>Matter summary</span><em>[FACT]</em></div>
+            <div><span>Chronology</span><em>[SOURCE]</em></div>
+            <div><span>Questions for a lawyer</span><em>[UNKNOWN]</em></div>
+            <div><span>Court rule check</span><em>[CHECKED]</em></div>
+          </div>
+        </div></div>
+        <p class="cap">Free resource cover, A4.</p>
+      </div>
+      <div class="c8">
+        <div class="spec">
+          <div>
+            <h4>Palette</h4>
+            <div class="pal">
+              <div style="background:var(--r1-paper);color:var(--r1-ink)"><b>Paper</b>#FFFFFF<br>Ground</div>
+              <div style="background:var(--r1-ink);color:#fff"><b>Ink</b>#14161A<br>18.1:1</div>
+              <div style="background:var(--r1-red);color:#fff"><b>Proof Red</b>#C8321E<br>5.3:1 on white</div>
+              <div style="background:var(--r1-hi);color:var(--r1-ink)"><b>Highlighter</b>#FFE14D<br>Ink on it 13.9:1</div>
+            </div>
+          </div>
+          <div>
+            <h4>Type</h4>
+            <p style="font-family:'Newsreader',Georgia,serif;font-size:30px;line-height:1.05;font-weight:600">Newsreader</p>
+            <p class="muted" style="font-size:14px">Headlines and wordmark. Open Font Licence.</p>
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:18px">IBM Plex Mono</p>
+            <p class="muted" style="font-size:14px">Labels, brackets and sources.</p>
+          </div>
+          <div>
+            <h4>Voice</h4>
+            <ul class="clean">
+              <li>"Check the source, not the sentence."</li>
+              <li>"Real citation. Wrong argument."</li>
+              <li>"Mark it [UNKNOWN] and move on."</li>
+              <li>Corrections are published under a [CORRECTED] label with the date.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <div class="stack"><h4>Why it is right</h4><ul class="clean"><li>The logo is the skill being taught. No other legal AI brand owns the bracket.</li><li>It breaks the navy-and-blue code but keeps a legal register through the serif and the citation.</li><li>Lowest production cost of the three. Static, typable and works on any template.</li><li>A strong distinctive element for trade mark purposes, compared with the descriptive words "Legal AI".</li></ul></div>
+      <div class="stack"><h4>Risks and demands</h4><ul class="clean"><li>It could read as lawyerly to the consumer audience. Test with groups A and C.</li><li>The double meaning of [E] must never suggest Andrew's name is anything other than Easterbrook.</li><li>The brand demands behaviour: a public corrections log becomes non-negotiable.</li><li>Brackets lose their meaning if they are used for decoration.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROUTE 2 -->
+<section id="route-2">
+  <div class="stack-lg">
+    <div class="route-head">
+      <div class="route-no" style="font-family:'Atkinson Hyperlegible',Verdana,sans-serif;color:var(--r2-euc)">2</div>
+      <div class="stack">
+        <span class="eyebrow">Route 2 / Access</span>
+        <h2>Next Step</h2>
+        <p class="lede"><b>Idea: know your next step.</b> The foundation report says people arrive with a dismissal letter or a parenting dispute, not a legal category. This route treats the brand as public signage. It tells you where you are, which route you are on and what to do next. The signature asset is the fork, a route line that splits into three paths.</p>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="r2-hero">
+        <div class="r2-lock" aria-label="Legal AI with Andrew E">
+          <span class="l1">Legal AI<br>with Andrew E</span>
+          <span class="l2">Know your next step.</span>
+        </div>
+        <div class="stack" style="gap:2.4cqw">
+          <svg class="r2-fork" viewBox="0 0 240 130" role="img" aria-label="Route line splitting into three paths">
+            <circle cx="16" cy="65" r="12" fill="#FFFFFF"/>
+            <path d="M16 65 H96 C130 65 140 22 176 22 H228" fill="none" stroke="#FFC531" stroke-width="14" stroke-linecap="round"/>
+            <path d="M96 65 C130 65 140 108 176 108 H228" fill="none" stroke="#D6ECF5" stroke-width="14" stroke-linecap="round"/>
+            <path d="M96 65 H228" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 14"/>
+          </svg>
+          <div class="r2-routes">
+            <div><i style="background:var(--r2-sig)"></i>Using AI without a lawyer</div>
+            <div><i style="background:var(--r2-sky)"></i>Using AI with your lawyer</div>
+            <div><i style="background:repeating-linear-gradient(90deg,#fff 0 3px,transparent 3px 8px)"></i>I have limited legal help</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="board">
+      <div class="c5">
+        <div class="art"><div class="r2-ig">
+          <div class="top"><small>Without a lawyer</small><h5>Before you ask AI about a legal letter</h5></div>
+          <ol>
+            <li><b>1</b>Find your court or tribunal</li>
+            <li><b>2</b>Check for a deadline</li>
+            <li><b>3</b>Keep the original document</li>
+          </ol>
+          <div class="foot"><span>General education, not legal advice</span><span>Legal AI with Andrew E</span></div>
+        </div></div>
+        <p class="cap">Instagram carousel cover. The route colour tells followers which path a post belongs to.</p>
+      </div>
+      <div class="c7">
+        <div class="art"><div class="r2-yt">
+          <div class="t"><small>With your lawyer</small><h5>Using AI with your lawyer</h5><span class="arrow" aria-hidden="true">&rarr;</span></div>
+          <div class="portrait"><span>Andrew's real portrait</span></div>
+        </div></div>
+        <p class="cap">YouTube thumbnail, 1280 x 720. Signal yellow is the strongest thumbnail colour of the three routes.</p>
+        <div class="av-row" style="margin-top:20px">
+          <div class="av photo">PORTRAIT</div>
+          <div class="av r2-av"><svg width="72" height="40" viewBox="0 0 240 130" aria-hidden="true"><circle cx="16" cy="65" r="12" fill="#fff"/><path d="M16 65 H96 C130 65 140 22 176 22 H228" fill="none" stroke="#FFC531" stroke-width="18" stroke-linecap="round"/><path d="M96 65 C130 65 140 108 176 108 H228" fill="none" stroke="#D6ECF5" stroke-width="18" stroke-linecap="round"/></svg></div>
+          <p class="muted" style="font-size:14px;max-width:34ch">The fork works as a compact mark, a favicon and a video bumper: the line draws, splits and settles.</p>
+        </div>
+      </div>
+      <div class="c4">
+        <div class="art"><div class="r2-pack">
+          <span style="font-size:3.4cqw;font-weight:700;color:var(--r2-euc)">Legal AI with Andrew E</span>
+          <h5>Legal Preparation Starter Pack</h5>
+          <svg class="map" viewBox="0 0 240 130" aria-hidden="true">
+            <circle cx="16" cy="65" r="12" fill="#0E4D3F"/>
+            <path d="M16 65 H96 C130 65 140 22 176 22 H228" fill="none" stroke="#FFC531" stroke-width="14" stroke-linecap="round"/>
+            <path d="M96 65 C130 65 140 108 176 108 H228" fill="none" stroke="#0E4D3F" stroke-width="14" stroke-linecap="round"/>
+          </svg>
+          <div class="foot"><span>You are here</span><span>6 templates</span></div>
+        </div></div>
+        <p class="cap">Free resource cover, A4.</p>
+      </div>
+      <div class="c8">
+        <div class="spec">
+          <div>
+            <h4>Palette</h4>
+            <div class="pal">
+              <div style="background:var(--r2-euc);color:#fff"><b>Eucalypt</b>#0E4D3F<br>9.8:1 with white</div>
+              <div style="background:var(--r2-sig);color:var(--r2-ink)"><b>Signal</b>#FFC531<br>Ink on it 10.8:1</div>
+              <div style="background:var(--r2-sky);color:var(--r2-ink)"><b>Sky</b>#D6ECF5<br>Ink on it 14.0:1</div>
+              <div style="background:var(--r2-coral);color:#fff"><b>Caution</b>#C2452F<br>5.0:1 with white</div>
+            </div>
+          </div>
+          <div>
+            <h4>Type</h4>
+            <p style="font-family:'Atkinson Hyperlegible',Verdana,sans-serif;font-size:28px;line-height:1.05;font-weight:700">Atkinson Hyperlegible</p>
+            <p class="muted" style="font-size:14px">Drawn for the Braille Institute to help low-vision readers tell similar letters apart. Free licence. The typeface choice is itself an access promise.</p>
+          </div>
+          <div>
+            <h4>Voice</h4>
+            <ul class="clean">
+              <li>Second person, numbered steps, one action per line.</li>
+              <li>"Find your court first."</li>
+              <li>"This is where a lawyer helps."</li>
+              <li>Every post ends with a safe next step.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <div class="stack"><h4>Why it is right</h4><ul class="clean"><li>It turns the two learning routes, the core product decision, into the visual system.</li><li>Built for the consumer audience the strategy prioritises: groups A, B and C.</li><li>It is the most accessible route by design. The typeface choice and contrast are part of the story.</li><li>Eucalypt green breaks the navy code and feels Australian without flags or kangaroos.</li></ul></div>
+      <div class="stack"><h4>Risks and demands</h4><ul class="clean"><li>Wayfinding is a known design genre, so it is less ownable than Route 1.</li><li>It could underplay the analytical and professional work done on LinkedIn.</li><li>Route colour-coding needs discipline across every template.</li><li>Close to a government-services look. Keep the founder's portrait prominent.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROUTE 3 -->
+<section id="route-3">
+  <div class="stack-lg">
+    <div class="route-head">
+      <div class="route-no" style="font-family:'Archivo',sans-serif;font-stretch:125%;color:var(--r3-blue)">3</div>
+      <div class="stack">
+        <span class="eyebrow">Route 3 / Provocation</span>
+        <h2>Resolve</h2>
+        <p class="lede"><b>Idea: from fluent to focused.</b> AI produces text that sounds right. This identity shows that as a blur. Checking brings it into focus. The signature asset is motion: the letters "AI" in the wordmark start soft and resolve to sharp. In static use, every layout pairs one blurred element with one sharp element.</p>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="r3-hero">
+        <div class="r3-lock" aria-label="Legal AI"><span>LEGAL</span><span class="ai">AI</span></div>
+        <div class="r3-sub">
+          <span class="w">with Andrew E</span>
+          <div class="r3-meter" aria-hidden="true">
+            <span>CONFIDENCE</span><span class="bar"><i style="width:92%"></i></span>
+            <span>ACCURACY</span><span class="bar acc"><i></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="cap" style="margin-top:-20px">Live: the wordmark resolves on a six-second loop. Motion stops if the viewer has reduced motion turned on.</p>
+
+    <div class="board">
+      <div class="c5">
+        <div class="art"><div class="r3-ig">
+          <span class="mono">PROMPT, THEN PROVE / 03</span>
+          <div class="stack" style="gap:3cqw">
+            <span class="blur" aria-hidden="true">The tenant is entitled to compensation under the relevant legislation because the landlord clearly failed in their obligations and courts consistently favour tenants in these matters.</span>
+            <span class="sharp">Which legislation? Which court? <u>Check before you send.</u></span>
+          </div>
+          <div class="row"><span class="mono">ACCURACY: UNVERIFIED</span><span class="mk">LEGAL <span>AI</span></span></div>
+        </div></div>
+        <p class="cap">Instagram post. The blurred passage is a fictional AI answer, illegible on purpose.</p>
+      </div>
+      <div class="c7">
+        <div class="art"><div class="r3-yt">
+          <div class="t"><span class="a" aria-hidden="true">SOUNDS RIGHT.</span><span class="b">IS IT?</span><span class="m">AI LEGAL REALITY CHECK</span></div>
+          <div class="portrait"><span>Andrew's real portrait</span></div>
+        </div></div>
+        <p class="cap">YouTube thumbnail, 1280 x 720. Focus brackets frame the portrait.</p>
+        <div class="av-row" style="margin-top:20px">
+          <div class="av photo">PORTRAIT</div>
+          <div class="av r3-av">AI</div>
+          <div class="av sm r3-av">AI</div>
+          <p class="muted" style="font-size:14px;max-width:34ch">The compact mark is "AI" in light focus blue on graphite. It suits a video watermark and favicon.</p>
+        </div>
+      </div>
+      <div class="c4">
+        <div class="art"><div class="r3-pack">
+          <span class="mono">NEWSLETTER / FORTNIGHTLY</span>
+          <h5><span aria-hidden="true">LEGAL AI</span>FIELD NOTES</h5>
+          <div class="stack" style="gap:3cqw"><span class="line"></span><span class="mono">One skill. One source. Checked.</span></div>
+        </div></div>
+        <p class="cap">Legal AI Field Notes cover. The name comes from the strategy document.</p>
+      </div>
+      <div class="c8">
+        <div class="spec">
+          <div>
+            <h4>Palette</h4>
+            <div class="pal">
+              <div style="background:var(--r3-gr);color:#fff"><b>Graphite</b>#0D0E12<br>19.3:1 with white</div>
+              <div style="background:var(--r3-blue);color:#fff"><b>Focus Blue</b>#2B2BFF<br>7.3:1 with white</div>
+              <div style="background:var(--r3-gr);color:var(--r3-lb)"><b>Focus Light</b>#8A8BFF<br>6.6:1 on graphite</div>
+              <div style="background:var(--r3-mist);color:var(--r3-gr)"><b>Mist</b>#EEF0F5<br>Ground</div>
+            </div>
+          </div>
+          <div>
+            <h4>Type</h4>
+            <p style="font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:26px;line-height:1.05">ARCHIVO EXPANDED</p>
+            <p class="muted" style="font-size:14px">A variable-width grotesque. Expanded for headlines, normal width for text. Open Font Licence.</p>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:16px">JetBrains Mono</p>
+            <p class="muted" style="font-size:14px">Data labels and status readouts.</p>
+          </div>
+          <div>
+            <h4>Voice</h4>
+            <ul class="clean">
+              <li>Short, sharp, a little contrarian.</li>
+              <li>"Sounds right. Is it?"</li>
+              <li>"Confidence: high. Accuracy: unverified."</li>
+              <li>Critiques the hype, never the person.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <div class="stack"><h4>Why it is right</h4><ul class="clean"><li>The most distinctive route in a feed and the most award-ready, because the motion idea carries the brand.</li><li>Strongest for LinkedIn commentary, short video and the professional audience (group D).</li><li>Shows the core risk, fluent but unverified text, rather than describing it.</li></ul></div>
+      <div class="stack"><h4>Risks and demands</h4><ul class="clean"><li>The highest production effort. Blur and motion need templates in a video editor, not just Canva.</li><li>Blurred text must never carry information, for accessibility. It is decoration only, with the meaning in the sharp text.</li><li>It leans technical. It may feel cold to distressed consumers.</li><li>Electric blue keeps a faint tech-blue echo. The blur, not the colour, must do the work.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCORECARD -->
+<section id="compare">
+  <div class="stack-lg">
+    <div class="stack">
+      <span class="eyebrow">04 / Comparison</span>
+      <h2>Scored against the brief.</h2>
+      <p class="lede">The first four rows are the client's own brand qualities. The rest test whether the identity can be owned, run and read. The scores are my professional judgement before audience testing, not measured results.</p>
+    </div>
+    <div class="tbl">
+      <table class="score">
+        <thead><tr><th>Criterion</th><th>[E] Evidence</th><th>Next Step</th><th>Resolve</th><th>Reasoning</th></tr></thead>
+        <tbody>
+          <tr><td>Credibility</td><td><span class="dots" aria-label="5 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td><span class="dots" aria-label="3 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td><td><span class="dots" aria-label="4 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td>The citation register carries legal authority without law-firm codes.</td></tr>
+          <tr><td>Independence</td><td><span class="dots" aria-label="4 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td><span class="dots" aria-label="3 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td><td><span class="dots" aria-label="5 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td>Resolve is built to critique AI hype.</td></tr>
+          <tr><td>Approachability</td><td><span class="dots" aria-label="3 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td><td><span class="dots" aria-label="5 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td><span class="dots" aria-label="2 of 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td><td>Next Step speaks to people under stress.</td></tr>
+          <tr><td>Practicality</td><td><span class="dots" aria-label="5 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td><span class="dots" aria-label="5 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td><span class="dots" aria-label="3 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td><td>Brackets and numbered steps are usable tools as well as visuals.</td></tr>
+          <tr><td>Ownability</td><td><span class="dots" aria-label="5 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td><span class="dots" aria-label="2 of 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td><td><span class="dots" aria-label="4 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td>No one in the category owns the bracket. Wayfinding is a shared genre.</td></tr>
+          <tr><td>Solo production</td><td><span class="dots" aria-label="5 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td><span class="dots" aria-label="4 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td><span class="dots" aria-label="2 of 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td><td>A weekly 12-video plan needs a system one person can run.</td></tr>
+          <tr><td>Accessibility</td><td><span class="dots" aria-label="4 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td><span class="dots" aria-label="5 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td><span class="dots" aria-label="3 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td><td>All text colours pass 4.5:1. Resolve's blur needs strict rules.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- RECOMMENDATION -->
+<section id="recommendation">
+  <div class="rec">
+    <div class="stack">
+      <span class="eyebrow">05 / Recommendation</span>
+      <h3>Lead with Route 1, [E] Evidence.</h3>
+      <p>It is the only route where the logo is the method. It is the most ownable, the cheapest to run alone and the strongest distinctive element for trade mark purposes. Pick one route and commit to it. The original documents warn against combining unrelated identities, then recommend a blend of A, B and C anyway. A blend is how the work became generic.</p>
+      <p><b>What would change this.</b> If testing shows that consumers in groups A and C find the brackets intimidating, move to Route 2. If the channel mix shifts to short video and professional commentary, Route 3 becomes the stronger choice.</p>
+      <p style="opacity:.8;font-size:14px">On the name: "Legal AI" is descriptive. Under the Trade Marks Act 1995 (Cth), a mark must be capable of distinguishing the owner's services, and descriptive words often face objection. The distinctive weight therefore sits on "Andrew E" and the device. Get a professional search and advice through IP Australia before you commit. This note is a general observation, not a clearance opinion.</p>
+    </div>
+    <div class="stack">
+      <h4>Next steps</h4>
+      <ol class="steps">
+        <li><b>Retire the three conflicting palettes.</b> Record one decision in writing.</li>
+        <li><b>Run a five-second test.</b> Show each route on a real phone to five people from each audience group (A to D). Record recall, perceived trust and what each person thinks the brand does.</li>
+        <li><b>Shoot the portrait.</b> Follow the existing portrait playbook, and test it in a 110 px circle beside the compact mark.</li>
+        <li><b>Draw the final wordmark.</b> Kern and refine the chosen lockup. The bracket glyphs should be custom-drawn, not taken straight from a font.</li>
+        <li><b>Build eight templates.</b> Instagram post, carousel, Reel cover, YouTube thumbnail, banner, LinkedIn post, Starter Pack and newsletter header.</li>
+        <li><b>Publish the behaviour.</b> A dated corrections log and a source register go live with the brand.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section id="sources">
+  <div class="stack">
+    <span class="eyebrow">Sources and evidence boundary</span>
+    <ul class="sources">
+      <li><b>Client documents (primary):</b> AndrewE Brand Colours, Five Palette edition, 14 pp; Colour Brand Identity Report, 9 pp; Research and Platform Foundation Report; Social Media Strategy 2026. All dated 8 November 2026.</li>
+      <li><b>Contrast:</b> calculated with the WCAG 2.2 relative luminance formula for every colour pair shown. Thresholds are 4.5:1 for normal text and 3:1 for large text.</li>
+      <li><b>Wolff Olins context (secondary sources, from web search):</b> founded 1965 by Michael Wolff and Wally Olins; mindset described as ambition for the work, optimism for the world and fearlessness to flip the script (<a href="https://www.thedrum.com/news/2024/11/22/wolff-olins-ceo-ai-design-and-how-build-brand-stands-out" target="_blank" rel="noopener">The Drum, 2024</a>); Uber 2018 identity (<a href="https://www.dezeen.com/2018/09/14/uber-rebrand-wolff-olins-black-white-wordmark-logo-typography/amp/" target="_blank" rel="noopener">Dezeen</a>); 60-year retrospective (<a href="https://www.designweek.co.uk/six-projects-six-decades-60-years-of-wolff-olins-creative-excellence/" target="_blank" rel="noopener">Design Week</a>). Wolff Olins' own site could not be reached from this session.</li>
+      <li><b>Not verified:</b> font licence terms should be rechecked at the time of production; trade mark availability has not been searched; handle availability is unchecked.</li>
+      <li>This work uses an approach informed by publicly reported Wolff Olins practice. It is not affiliated with, or endorsed by, Wolff Olins. Portraits are placeholders. Use only genuine photographs of Andrew.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>Legal AI with Andrew E / Identity routes / 8 November 2026 / Creative direction, not final artwork</footer>
+</div>
