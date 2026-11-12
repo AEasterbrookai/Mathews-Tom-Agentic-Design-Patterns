@@ -1,0 +1,385 @@
+<title>Generated Kit Red Team</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;900&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a red-team review. Verdict, annotated evidence, severity table, benchmark, prompt surgery, prompt library, skills. */
+:root{
+  --paper:#F5F6F7; --surface:#FFFFFF; --ink:#121418; --muted:#555B64; --rule:#D9DCE1; --chip:#ECEEF1;
+  --red:#D4231B; --redtext:#B11D16; --crit:#B42318; --high:#B54708; --med:#475467; --pass:#1E7A46;
+  --code-bg:#121417; --code-fg:#E9EAEC;
+  --f-display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --f-serif:"Newsreader",Georgia,serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#0F1114;--surface:#171A1F;--ink:#ECEDEF;--muted:#A4A9B1;--rule:#2B2F36;--chip:#22262C;--redtext:#FF8A80;--crit:#FF8A80;--high:#FDB022;--med:#A4A9B1;--pass:#5FD38E;--code-bg:#0A0B0D;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0F1114;--surface:#171A1F;--ink:#ECEDEF;--muted:#A4A9B1;--rule:#2B2F36;--chip:#22262C;--redtext:#FF8A80;--crit:#FF8A80;--high:#FDB022;--med:#A4A9B1;--pass:#5FD38E;--code-bg:#0A0B0D;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-display);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+section{padding-block:64px;border-top:1px solid var(--rule)}
+h1,h2,h3,h4{margin:0;text-wrap:balance;line-height:1.08}
+h2{font-size:clamp(30px,4.4vw,50px);font-weight:900;letter-spacing:-.02em}
+h3{font-size:clamp(20px,2.2vw,26px);font-weight:700;letter-spacing:-.01em}
+h4{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+p{margin:0;max-width:68ch}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:clamp(18px,1.8vw,21px);line-height:1.5;max-width:62ch}
+.muted{color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:14px}
+.stack-lg{display:flex;flex-direction:column;gap:32px}
+:focus-visible{outline:3px solid #2B2BFF;outline-offset:3px}
+
+.hero{border-top:0;padding-block:56px 56px}
+.hero h1{font-size:clamp(42px,7.6vw,96px);font-weight:900;letter-spacing:-.035em;line-height:.95;max-width:13ch;margin-top:36px}
+.hero h1 s{text-decoration-color:var(--red);text-decoration-thickness:.08em;color:var(--muted)}
+.hero .lede{margin-top:24px}
+.verdict{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:36px}
+.verdict div{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:4px}
+.verdict b{font-size:28px;font-weight:900;font-variant-numeric:tabular-nums}
+@media (max-width:760px){.verdict{grid-template-columns:minmax(0,1fr)}}
+
+/* annotated */
+.anno{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--rule);max-width:100%}
+.anno img{display:block;width:100%;height:auto}
+.pin{position:absolute;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;font:600 13px/30px var(--f-mono);text-align:center;box-shadow:0 0 0 3px #fff,0 2px 8px rgba(0,0,0,.35)}
+@media (max-width:600px){.pin{width:22px;height:22px;font-size:11px;line-height:22px}}
+.legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 24px;font-size:14.5px}
+.legend div{display:flex;gap:10px;align-items:baseline}
+.legend span{flex:none;width:22px;height:22px;border-radius:50%;background:var(--red);color:#fff;font:600 11px/22px var(--f-mono);text-align:center}
+@media (max-width:860px){.legend{grid-template-columns:minmax(0,1fr)}}
+
+/* table */
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:14.5px}
+th,td{text-align:left;vertical-align:top;padding:13px 15px;border-bottom:1px solid var(--rule)}
+th{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:0}
+.sev{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.sev.c{color:var(--crit)}.sev.h{color:var(--high)}.sev.m{color:var(--med)}.sev.ok{color:var(--pass)}
+td b{display:block;margin-bottom:2px}
+
+/* legibility */
+.leg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+@media (max-width:700px){.leg{grid-template-columns:minmax(0,1fr)}}
+.leg figure{margin:0;display:flex;flex-direction:column;gap:10px}
+.leg .px{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:20px;display:flex;gap:20px;align-items:flex-end;flex-wrap:wrap}
+.leg img{display:block;image-rendering:auto;max-width:100%}
+.leg figcaption{font-size:14px;color:var(--muted)}
+
+/* benchmark */
+.bench td:first-child{font-weight:700;width:16%}
+
+/* prompt surgery */
+.surgery{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:var(--surface)}
+.cut{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) 110px;gap:20px;padding:16px 18px;border-bottom:1px solid var(--rule);align-items:start}
+.cut:last-child{border-bottom:0}
+.cut q{font-family:var(--f-serif);font-size:19px;line-height:1.3;quotes:none}
+.cut .v{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:760px){.cut{grid-template-columns:minmax(0,1fr)}}
+
+/* prompts */
+.anatomy{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.anatomy div{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:12px;display:flex;flex-direction:column;gap:4px;font-size:13.5px}
+.anatomy b{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;color:var(--redtext)}
+@media (max-width:900px){.anatomy{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.prompt{border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--surface)}
+.prompt header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.prompt header div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.prompt pre{margin:0;padding:18px;background:var(--code-bg);color:var(--code-fg);font:13.5px/1.6 var(--f-mono);white-space:pre-wrap;word-break:break-word}
+.prompt .why{padding:12px 16px;font-size:14px;color:var(--muted);border-top:1px solid var(--rule)}
+button.copy{font:600 12px var(--f-mono);letter-spacing:.04em;padding:8px 12px;border-radius:4px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+button.copy:hover{background:var(--ink);color:var(--paper)}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+@media (max-width:900px){.grid2{grid-template-columns:minmax(0,1fr)}}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+@media (max-width:820px){.skills{grid-template-columns:minmax(0,1fr)}}
+.skills > div{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:22px;display:flex;flex-direction:column;gap:12px}
+ol.clean,ul.clean{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:15px}
+.rec{background:var(--ink);color:var(--paper);border-radius:8px;padding:36px;display:flex;flex-direction:column;gap:16px}
+.rec .eyebrow{color:var(--paper);opacity:.7}
+.rec h3{font-size:clamp(24px,2.8vw,34px);font-weight:900}
+.sources{font-size:13.5px;color:var(--muted);display:flex;flex-direction:column;gap:6px;padding-left:18px;margin:0}
+footer{padding-block:36px;border-top:1px solid var(--rule);font-size:13px;color:var(--muted)}
+code{font-family:var(--f-mono);font-size:.92em;background:var(--chip);padding:1px 5px;border-radius:3px}
+</style>
+
+<div class="wrap">
+
+<section class="hero">
+  <span class="eyebrow">Legal AI with Andrew E / Red team of the generated social kit / 12 November 2026</span>
+  <h1>Polished. <s>Premium.</s> Not yet yours.</h1>
+  <p class="lede">The four generated kits are consistent across platforms, cleanly laid out and much better finished than the PDFs. But they render the same generic navy-and-cobalt system the review rejected, and they carry three integrity problems that a brand about verification cannot publish. The CGI prompt would take you further in the wrong direction. Below are the findings, how award-level studios work differently, and repaired prompts.</p>
+  <div class="verdict">
+    <div><span class="eyebrow">Critical</span><b style="color:var(--crit)">3</b><span class="muted">Synthetic face, invented metrics, face drift</span></div>
+    <div><span class="eyebrow">High</span><b style="color:var(--high)">4</b><span class="muted">Generic system, platform-blue accent, contrast, AI-default backgrounds</span></div>
+    <div><span class="eyebrow">Medium</span><b style="color:var(--med)">4</b><span class="muted">Generic hooks, garbled text, duplicated faces, self-claims</span></div>
+  </div>
+</section>
+
+<!-- ANNOTATED -->
+<section>
+  <div class="stack-lg">
+    <div class="stack">
+      <span class="eyebrow">01 / Evidence</span>
+      <h2>What the red team sees.</h2>
+      <p class="lede">Annotated on your third image, the one with the palette panel. The same issues appear in all four.</p>
+    </div>
+    <div class="anno">
+      <img src="kit.jpg" alt="Generated social media brand kit for Legal AI with Andrew E, showing YouTube, Instagram, LinkedIn and Facebook mock-ups, palette and content examples" width="1448" height="1086">
+      <span class="pin" style="left:45.6%;top:14.7%">1</span>
+      <span class="pin" style="left:58.7%;top:26.8%">2</span>
+      <span class="pin" style="left:91.2%;top:85%">3</span>
+      <span class="pin" style="left:84.8%;top:27.9%">4</span>
+      <span class="pin" style="left:25.6%;top:39.9%">5</span>
+      <span class="pin" style="left:95.5%;top:47.9%">6</span>
+      <span class="pin" style="left:58.7%;top:90%">7</span>
+      <span class="pin" style="left:15%;top:90.2%">8</span>
+      <span class="pin" style="left:6.6%;top:23%">9</span>
+    </div>
+    <div class="legend">
+      <div><span>1</span>A generated man stands in for Andrew.</div>
+      <div><span>2</span>Invented metrics: 24.8K subscribers, 184 videos.</div>
+      <div><span>3</span>A different, bearded man appears in this thumbnail.</div>
+      <div><span>4</span>Subscribe and Follow buttons are rendered in the brand cobalt, the platforms' own button colour.</div>
+      <div><span>5</span>"Precision Cobalt" #3D6BFF: 4.16:1 on paper.</div>
+      <div><span>6</span>Silk-wave background: a generator default.</div>
+      <div><span>7</span>"Legal Practice" speaks to lawyers, not the core consumer audience.</div>
+      <div><span>8</span>"Trusted and authoritative" is claimed, not shown.</div>
+      <div><span>9</span>Serif plus short blue underline: the same wordmark idea as the PDFs.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINDINGS -->
+<section>
+  <div class="stack-lg">
+    <div class="stack">
+      <span class="eyebrow">02 / Findings</span>
+      <h2>Ranked by severity.</h2>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Severity</th><th>Finding and evidence</th><th>Why it matters</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td><span class="sev c">Critical</span></td><td><b>A synthetic portrait stands in for Andrew</b>Every image uses a generated face for the banner, avatar and thumbnails.</td><td>Both identity reports say: "Never present a synthetic portrait as a real image." LinkedIn's profile photo guidance, cited in your own PDF, expects the member's likeness. For a brand that teaches people to check what AI produces, being caught with an AI face is the worst possible failure.</td><td>Commission or shoot genuine portraits. Use AI only to edit the background, with identity locked (prompt P4).</td></tr>
+          <tr><td><span class="sev c">Critical</span></td><td><b>Invented social proof</b>12.6K followers, 24.8K subscribers, 184 videos, 18,421 and 20K followers. The figures differ between images.</td><td>Mock-ups leak. If a screenshot circulates, it shows numbers that are not true. That is a reputational risk and could raise misleading-conduct questions under the Australian Consumer Law. Your strategy also says follower totals are not the founding test.</td><td>Use "0" or "Sample" in every mock-up. Add a "Concept, not live data" label.</td></tr>
+          <tr><td><span class="sev c">Critical</span></td><td><b>The face changes between assets</b>The bottom-right thumbnail in image 3 shows an older, bearded man. Thumbnails in images 1 and 2 differ in hair and build from the banner.</td><td>Recognition through consistency is the reason for a portrait-led brand. Generators cannot hold one identity reliably.</td><td>One real photo set, cropped from the same session.</td></tr>
+          <tr><td><span class="sev h">High</span></td><td><b>It is the generic system again</b>Deep navy #0B1830 and cobalt #3D6BFF, a serif wordmark, a short blue underline and a white-blue gradient.</td><td>This is Palette 01 from the Five Palette PDF, rendered with more gloss. It fails the swap test: put any legal tech firm's name on it and it still works.</td><td>Apply a chosen route and palette (A Proof or B Highlight) before generating anything.</td></tr>
+          <tr><td><span class="sev h">High</span></td><td><b>The brand blue is the platforms' blue</b>The mock-ups render Subscribe, Follow and links in the same cobalt as the brand.</td><td>On YouTube, Facebook, LinkedIn and Instagram, blue already belongs to the interface. Your accent becomes invisible exactly where it needs to stand out.</td><td>Choose an accent the platforms do not use: correction red or highlighter lime.</td></tr>
+          <tr><td><span class="sev h">High</span></td><td><b>The accent fails contrast</b>Cobalt as text on paper measures 4.16:1. White text on cobalt measures 4.43:1.</td><td>Both fall below the 4.5:1 minimum for normal text. The access-to-justice audience includes low-vision readers.</td><td>Proof red #D4231B passes at 5.18:1 both ways.</td></tr>
+          <tr><td><span class="sev h">High</span></td><td><b>Generator-default backgrounds</b>Silky white and blue waves, soft glow and glossy light streaks.</td><td>This is what generators return for "premium abstract background". In my judgement, design-literate viewers increasingly read it as AI-made, which works against a brand that critiques AI output.</td><td>Use physical, specific plates: paper, ink, a red pen, a highlighted page (prompts P1 to P3).</td></tr>
+          <tr><td><span class="sev m">Medium</span></td><td><b>Generic, interchangeable hooks</b>"5 Practical Ways...", "Using AI Safely...", "Common AI Mistakes..." all share one layout and tone.</td><td>They are still legible at 168 px (see the test below), but nothing creates tension or curiosity. Your strategy already has sharper hooks.</td><td>Use the strategy's hooks: "Real citation. Wrong argument."</td></tr>
+          <tr><td><span class="sev m">Medium</span></td><td><b>Garbled and inconsistent text</b>"Hoits" in the YouTube sidebar (image 1). "Legal Matters" is capitalised in one bio and lowercase elsewhere. The handle varies in case.</td><td>These small artefacts are classic signs of generated work.</td><td>Set all text as live type in Figma or Canva.</td></tr>
+          <tr><td><span class="sev m">Medium</span></td><td><b>The face is duplicated</b>The banner portrait sits beside the profile photo on YouTube, LinkedIn and Facebook (image 4).</td><td>Two faces compete. The banner should carry the idea, not a second headshot.</td><td>Banner = wordmark + device + descriptor. Profile = face.</td></tr>
+          <tr><td><span class="sev m">Medium</span></td><td><b>Claims instead of proof</b>"Trusted and authoritative", "Premium and cohesive", "Modern and intelligent".</td><td>Self-applied adjectives persuade nobody. Award-winning systems show the quality in behaviour.</td><td>Show the method: brackets, sources, a corrections log.</td></tr>
+          <tr><td><span class="sev ok">Works</span></td><td><b>Worth keeping</b>Consistent cross-platform layout, clear name hierarchy, a portrait-led profile, a serif that is a real step up from the PDFs, and generous space.</td><td colspan="2">Keep the discipline. Change the idea, the palette, the imagery source and the copy.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- LEGIBILITY -->
+<section>
+  <div class="stack-lg">
+    <div class="stack">
+      <span class="eyebrow">03 / Small-size test</span>
+      <h2>At 168 pixels, the hook decides.</h2>
+      <p class="lede">Both thumbnails below are shown at 168 px wide, the size of a sidebar recommendation. The kit's thumbnail does read, so legibility is not the issue. The difference is the hook: one is a list title, the other is a question that challenges the viewer. The Proof mock has no portrait, so this tests type and colour only.</p>
+    </div>
+    <div class="leg">
+      <figure><div class="px"><img src="thumb_168_kit.png" width="168" alt="Generated kit thumbnail reading 5 Practical Ways to Use AI in Legal Matters, at 168 pixels wide"></div><figcaption>Generated kit: readable, polite and interchangeable.</figcaption></figure>
+      <figure><div class="px"><img src="thumb_168_proof.png" width="168" alt="Proof palette thumbnail reading Sounds right. Is it? at 168 pixels wide"></div><figcaption>Proof palette: reads as a challenge, and the red owns the feed.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- BENCHMARK -->
+<section>
+  <div class="stack-lg">
+    <div class="stack">
+      <span class="eyebrow">04 / Benchmark</span>
+      <h2>How award-level identity work differs.</h2>
+      <p class="lede">The examples are widely reported identity programmes, used to show a principle, not as templates to copy. Juries at D&amp;AD and Cannes Lions judge the idea, the craft and the effect. Gloss alone does not score.</p>
+    </div>
+    <div class="tbl">
+      <table class="bench">
+        <thead><tr><th>Dimension</th><th>Generated kit</th><th>Award-level practice</th><th>Reported example</th></tr></thead>
+        <tbody>
+          <tr><td>Idea</td><td>None. Adjectives on a gradient.</td><td>One ownable thought that generates every asset.</td><td>Uber 2018 (Wolff Olins): a simplified wordmark and the custom Uber Move typeface, built for a platform rather than a single app.</td></tr>
+          <tr><td>Reduction</td><td>Adds effects to look premium.</td><td>Removes until only the essential mark remains. Confidence is shown by restraint.</td><td>Mastercard 2016 (Pentagram): the interlocking circles simplified, with the name later dropped from the symbol in many uses.</td></tr>
+          <tr><td>Personality</td><td>Neutral, corporate and safe.</td><td>A distinctive colour and a drawn language with a point of view.</td><td>Mailchimp 2018 (Collins): one owned yellow plus an expressive illustration and type system.</td></tr>
+          <tr><td>Image</td><td>Synthetic people and stock abstraction.</td><td>Art-directed real photography and objects with meaning.</td><td>Studios brief photographers with shot lists tied to the idea.</td></tr>
+          <tr><td>Type</td><td>A default display serif.</td><td>Custom or carefully chosen type with refined details (kerning, a drawn glyph).</td><td>Custom typefaces are standard in top-tier programmes.</td></tr>
+          <tr><td>Colour</td><td>The category default, matching platform UI.</td><td>One owned colour with a job, tested in context.</td><td>For you: correction red or highlighter lime.</td></tr>
+          <tr><td>Proof</td><td>Claims "trusted".</td><td>Behaviour that demonstrates the promise.</td><td>For you: brackets, sources and a public corrections log.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- PROMPT SURGERY -->
+<section>
+  <div class="stack-lg">
+    <div class="stack">
+      <span class="eyebrow">05 / Your CGI prompt, red-teamed</span>
+      <h2>Adjectives in, generator defaults out.</h2>
+      <p class="lede">The prompt describes a rendering style for cars, jewellery and hardware. It has no subject, no layout, no text space and no exclusions, so the model fills the gaps with its defaults: chrome, glow and blue gradients. Each phrase, and what it actually does:</p>
+    </div>
+    <div class="surgery">
+      <div class="cut"><q>High-contrast cinematic CGI</q><p>"Cinematic" pulls towards film grading (teal shadows, orange highlights). "CGI" signals a render, which fights the real-photo portrait rule.</p><span class="v" style="color:var(--high)">Replace</span></div>
+      <div class="cut"><q>premium reflective materials, realistic specular highlights, sophisticated gloss finishes</q><p>It produces chrome, glass and lacquer: the AI-hype look. Your Identity Report warns against looking like "an AI consultancy rather than an approachable educator".</p><span class="v" style="color:var(--crit)">Redirect</span></div>
+      <div class="cut"><q>colour-adaptive metallic reflections ... preserving its original hues</q><p>This contradicts itself. Metal reflects its surroundings, so hues shift. Generators also cannot hold exact hex values without neutral surfaces.</p><span class="v" style="color:var(--crit)">Remove</span></div>
+      <div class="cut"><q>controlled luminous accents</q><p>It produces glowing lines and light streaks, the sci-fi AI tropes on your avoid list.</p><span class="v" style="color:var(--crit)">Remove</span></div>
+      <div class="cut"><q>architectural precision and exceptional visual sharpness</q><p>Vague quality words have little effect. Precision comes from lens, light and composition instructions.</p><span class="v" style="color:var(--med)">Make concrete</span></div>
+      <div class="cut"><q>seamlessly adapted to any colour palette ... brand identity</q><p>A prompt that fits any brand is, by definition, not your brand. It needs your subject, palette roles and exclusions.</p><span class="v" style="color:var(--high)">Make specific</span></div>
+    </div>
+    <div class="stack">
+      <h4>What to keep from your instinct</h4>
+      <p>Your wish for sharpness, high contrast and crafted materials is right. Point it at an object that means something, your own [E] bracket, rather than at abstract waves. Prompt P0 does exactly that.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROMPT LIBRARY -->
+<section>
+  <div class="stack-lg">
+    <div class="stack">
+      <span class="eyebrow">06 / Engineered prompts</span>
+      <h2>Ten slots, then plates, then type.</h2>
+      <p class="lede">Generate parts without words. Set every word in Figma or Canva afterwards. Each prompt fills the ten slots below. They are written for the Proof palette (ink #121417, paper #FFFFFF, correction red #D4231B). To use Highlight instead, swap in lime #D4F27A.</p>
+    </div>
+    <div class="anatomy">
+      <div><b>1 PURPOSE</b>What it is for, ratio, text space</div>
+      <div><b>2 SUBJECT</b>One concrete thing</div>
+      <div><b>3 COMPOSITION</b>Thirds, empty zones, crop safety</div>
+      <div><b>4 CAMERA</b>Lens, angle, depth of field</div>
+      <div><b>5 LIGHT</b>Source, direction, hardness</div>
+      <div><b>6 MATERIALS</b>Physical and specific</div>
+      <div><b>7 PALETTE</b>Hex values with roles</div>
+      <div><b>8 STYLE</b>Technique, not artist names</div>
+      <div><b>9 EXCLUDE</b>Clichés, text, people, blue</div>
+      <div><b>10 CHECK</b>What must be true to pass</div>
+    </div>
+
+    <div class="prompt" id="p0">
+      <header><div><span class="eyebrow">P0 / Your CGI prompt, repaired</span><h3>The [E] bracket as a crafted object</h3></div><button class="copy" type="button" data-target="t0">Copy prompt</button></header>
+<pre id="t0">Studio product photograph for a brand hero image, 16:9. Subject: a single sculptural object, a pair of square brackets enclosing a capital letter E, about 20 cm tall, cast in high-gloss red enamel (#D4231B) with thin brushed-steel edges. It stands on a sheet of heavyweight uncoated white paper (#FFFFFF). Composition: object on the left third, slightly turned 15 degrees; the right two-thirds stay completely empty for a headline. Camera: 100 mm macro lens look, eye level, f/8, everything on the object pin sharp. Light: large soft overhead source plus one hard rim light from the left that draws a crisp specular line along the enamel edges; one clean contact shadow in near-black ink tone (#121417). Colour discipline: the enamel stays pure red; all reflections are neutral grey and white only, with no blue, teal or warm cast. Style: editorial still-life photography, precise and restrained. Exclude: any other text or letters, logos, people, glow, light streaks, particles, bokeh orbs, waves, gradients, chrome background, blue tones. Check: the red reads as #D4231B, the background is clean white, the right two-thirds are empty.</pre>
+      <div class="why">Keeps your gloss, contrast and sharpness, but applies them to an ownable brand object instead of a generic abstraction. Use it for the website hero, channel trailer end card and slide covers.</div>
+    </div>
+
+    <div class="grid2">
+      <div class="prompt">
+        <header><div><span class="eyebrow">P1 / Banner plate</span><h3>Paper and one correction stroke</h3></div><button class="copy" type="button" data-target="t1">Copy prompt</button></header>
+<pre id="t1">Background plate for a YouTube channel banner, 16:9, 2560 x 1440. Subject: a seamless sheet of white paper (#FFFFFF) with fine natural grain. In the lower-left corner, one hand-drawn red felt-tip stroke (#D4231B) striking through a short line, with a slightly textured ink edge. Composition: everything else empty; keep the central band (about 1546 x 423) completely clear. Light: even, soft daylight, no vignette. Style: flat, print-like, photographic paper texture, not CGI. Exclude: text, letters, faces, waves, gradients, glow, blue. Check: pure white ground, one red mark only.</pre>
+        <div class="why">Then add the wordmark and descriptor as live text in Figma. Recheck YouTube's current banner safe-area guidance before export.</div>
+      </div>
+      <div class="prompt">
+        <header><div><span class="eyebrow">P2 / Thumbnail plate</span><h3>The marked page</h3></div><button class="copy" type="button" data-target="t2">Copy prompt</button></header>
+<pre id="t2">Photograph for a video thumbnail background, 16:9. Subject: a printed A4 page of dense body text lying on a white desk, seen from above at a slight angle, with a red fine-liner pen resting across it. One paragraph is bracketed in the margin with red ink square brackets. Composition: page on the left 55 per cent; right 45 per cent is plain white desk for a headline. Camera: 50 mm, shallow depth of field; the bracketed paragraph sharp, the rest softly out of focus. Light: neutral window daylight, true whites. Palette: white, ink black (#121417), red (#D4231B) only. Exclude: legible words, case names, citations or numbers (all page text must be unreadable blur), people, laptops, gavels, scales of justice, blue. Check: no readable text anywhere.</pre>
+        <div class="why">Unreadable text is essential. A generator will invent case names and citations, which a verification brand must never publish.</div>
+      </div>
+      <div class="prompt">
+        <header><div><span class="eyebrow">P3 / Overlay marks</span><h3>The editor's toolkit</h3></div><button class="copy" type="button" data-target="t3">Copy prompt</button></header>
+<pre id="t3">Asset sheet of six isolated hand-drawn editorial marks on a pure white background, arranged in a 3 x 2 grid with generous spacing: a pair of square brackets, a single strike-through line, a loose circle for ringing a word, a margin tick, a double underline, a short curved arrow. Red felt-tip ink (#D4231B), confident single strokes, slight natural texture at stroke ends. Flat even light, no shadows, no paper texture. Exclude: text, letters, numbers, colours other than red. Check: each mark is separate and easy to cut out.</pre>
+        <div class="why">Remove the background, vectorise and save as reusable stickers in Canva or Figma. These marks become your recognisable on-screen language.</div>
+      </div>
+      <div class="prompt">
+        <header><div><span class="eyebrow">P4 / Real photo edit</span><h3>Identity-locked background swap</h3></div><button class="copy" type="button" data-target="t4">Copy prompt</button></header>
+<pre id="t4">Edit the attached genuine photograph of Andrew. Preserve the person exactly: face, skin texture, hair, expression, age, body shape and clothing must not change in any way. Do not retouch, smooth, beautify, sharpen features or alter proportions. Change only the background: replace it with a seamless light-grey paper backdrop (#EEEEEC) with a soft, natural shadow behind the shoulders, matching the existing light direction and colour temperature. Output a 4:5 crop and a 1:1 crop with the face in the upper third. Check: overlay the result on the original; the face must match pixel-for-pixel in structure.</pre>
+        <div class="why">Use only with a real photograph. Compare the result with the original side by side, and discard any output where the face has changed.</div>
+      </div>
+    </div>
+
+    <div class="prompt">
+      <header><div><span class="eyebrow">P5 / Red-team QA</span><h3>Make a vision model check the output</h3></div><button class="copy" type="button" data-target="t5">Copy prompt</button></header>
+<pre id="t5">You are a strict brand red-team reviewer for "Legal AI with Andrew E", an Australian education brand whose promise is verification. Assess the attached image against this brief. Palette: ink #121417, paper #FFFFFF, correction red #D4231B; no blue. Avoid list: scales of justice, gavels, robot or chrome heads, circuit lines, glow, silk waves, gradients. For each test give a score of 0 to 2, the evidence and a fix: (1) identity truth: is any person synthetic or altered? (2) integrity: any invented metrics, logos, endorsements, legible case names or citations? (3) palette fidelity: list the five dominant colours as hex and compare them to the palette; (4) forbidden elements; (5) text artefacts; (6) empty space where the brief requires it; (7) would the image still fit a competitor's brand? (8) is "premium" coming from craft or from effects? Return a table, a total out of 16 and PASS only if the total is 13 or more with no zero on tests 1 or 2. Do not soften findings.</pre>
+      <div class="why">Run it on every generated plate before you use it. Then show the final asset to five real people from your audience groups.</div>
+    </div>
+
+    <div class="prompt">
+      <header><div><span class="eyebrow">Universal exclusions</span><h3>Paste at the end of any prompt</h3></div><button class="copy" type="button" data-target="t6">Copy block</button></header>
+<pre id="t6">Exclude: text, letters, numbers, logos, watermarks, people, faces, hands, scales of justice, gavels, courtroom columns, robots, chrome heads, circuit boards, glowing lines, light streaks, lens flares, bokeh orbs, particles, silk or fabric waves, abstract swooshes, colour gradients, purple, blue, teal, neon.</pre>
+      <div class="why">Some tools take exclusions as a separate negative prompt field or a parameter (for example Midjourney's <code>--no</code>). Where none exists, keep this sentence at the end of the prompt.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section>
+  <div class="stack-lg">
+    <div class="stack">
+      <span class="eyebrow">07 / Skills to build</span>
+      <h2>Where the quality gap actually is.</h2>
+      <p class="lede">The gap between these kits and award-level work is not rendering power. It is idea, art direction, typography and critique. Generators make all of these easier to skip.</p>
+    </div>
+    <div class="skills">
+      <div>
+        <h4>For you</h4>
+        <ol class="clean">
+          <li><b>Art direction.</b> Write a one-page shot list for a real portrait session: three crops, one workspace scene, one "marking a page" scene, all on the brand palette.</li>
+          <li><b>Typography basics.</b> Hierarchy, line length and headline kerning. Ellen Lupton's <i>Thinking with Type</i> is the standard primer.</li>
+          <li><b>Template building.</b> Figma or Canva components with locked fonts, colours and safe-area guides, so you never set a thumbnail from scratch.</li>
+          <li><b>Plate-first prompting.</b> Use the ten-slot anatomy and never generate words or people.</li>
+          <li><b>A critic's eye.</b> Run the swap, squint, cover, 168 px and contrast tests on every asset. Free contrast checkers such as WebAIM's do the maths.</li>
+          <li><b>Hook writing.</b> Turn list titles into tension: a claim, a doubt, a correction. Test two thumbnails where the platform allows it.</li>
+          <li><b>Brand strategy fluency.</b> Alina Wheeler's <i>Designing Brand Identity</i> covers the process top studios follow.</li>
+        </ol>
+      </div>
+      <div>
+        <h4>For Claude in this repository</h4>
+        <ul class="clean">
+          <li><b><code>brand-image-red-team</code></b> (new): integrity rules, the plate-first pipeline, the ten-slot prompt anatomy, a 20-point red-team rubric and the vision QA prompt.</li>
+          <li><b><code>wolff-olins-brand-craft</code></b> (existing): diagnosis, organising idea, category escape, system design and pressure tests.</li>
+          <li>Use the two together. Strategy first, then the idea, then plates, then type, then red team.</li>
+        </ul>
+        <h4 style="margin-top:12px">Order of work</h4>
+        <ol class="clean">
+          <li>Decide the route and palette (recommended: [E] Evidence with Proof).</li>
+          <li>Shoot real portraits.</li>
+          <li>Generate plates P0 to P3, and run P5 on each.</li>
+          <li>Build eight templates with live text.</li>
+          <li>Test with five people per audience group.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="rec">
+      <span class="eyebrow">Bottom line</span>
+      <h3>Stop asking the generator to be the designer.</h3>
+      <p>Award-level work comes from one owned idea executed with restraint. Use AI for plates and edits. Use a real photograph for your face. Set every word yourself. Then red-team the result as hard as you would an AI legal answer, because your audience will.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="stack">
+    <span class="eyebrow">Sources and limits</span>
+    <ul class="sources">
+      <li>Primary: the four generated kit images you supplied, and the earlier brand identity, strategy and research documents (8 November 2026).</li>
+      <li>Contrast: the WCAG 2.2 relative luminance formula. Cobalt #3D6BFF on paper #F8F8F6 measures 4.16:1; white on cobalt measures 4.43:1; Proof red #D4231B with white measures 5.18:1.</li>
+      <li>Small-size test: crops resized to 168 px wide with Lanczos resampling. The Proof thumbnail is a mock with no portrait.</li>
+      <li>Benchmark examples (Uber 2018 by Wolff Olins, Mastercard 2016 by Pentagram, Mailchimp 2018 by Collins) are widely reported in the design press. Only the Uber details were checked in this session (Dezeen, via search). The others come from general knowledge and should be verified before you quote them.</li>
+      <li>Australian Consumer Law and platform-policy points are general observations, not legal advice.</li>
+      <li>The judgement that silk-wave backgrounds read as AI-made is professional opinion, not a measured finding.</li>
+      <li>Prompts are tool-agnostic. Results vary by model and version. Check the output, every time.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>Legal AI with Andrew E / Generated kit red team / 12 November 2026 / Creative direction, not final artwork</footer>
+</div>
+<script>
+document.querySelectorAll('button.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.target), txt=el.textContent;
+    var done=function(){var o=b.textContent;b.textContent='Copied';setTimeout(function(){b.textContent=o},1600)};
+    var fallback=function(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected, press copy'};
+    try{navigator.clipboard.writeText(txt).then(done,fallback)}catch(e){fallback()}
+  });
+});
+</script>
