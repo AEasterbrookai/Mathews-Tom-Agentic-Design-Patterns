@@ -2,96 +2,101 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=IBM+Plex+Mono:wght@400;600&family=Schibsted+Grotesk:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
-/* Layout: a presentation board, deliberately single-theme (it is artwork). Grey studio ground, platform screens as white devices, brand in ink, paper and correction red. */
+/* Layout: a single-theme presentation board (artwork). Paper ground, ink type, red for [E] and one key word, green for series tags, rules, numbers and underlines, yellow only on black cards. */
 :root{
   color-scheme:light;
-  --board:#E9E9E6; --ink:#121417; --paper:#FFFFFF; --red:#D4231B; --wash:#F3F3F0; --grey:#5F636B; --line:#DADAD5;
-  --ui:#0F0F0F; --ui-muted:#606060; --ui-line:#E5E5E5; --plat-blue:#0866FF;
-  --serif:"Newsreader",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,monospace; --grot:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --board:#FFFFFF; --ink:#121417; --paper:#FFFFFF; --red:#D4231B; --green:#006E30; --yellow:#FFD600;
+  --grey:#5F636B; --line:#E3E3E0; --frame:#D9D9D6;
+  --ui:#0F0F0F; --ui-muted:#606060; --ui-line:#E5E5E5;
+  --serif:"Newsreader",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
   --sys:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 }
 *{box-sizing:border-box}
 body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
-.wrap{max-width:1320px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:40px 56px;display:flex;flex-direction:column;gap:28px}
-.br{color:var(--red)}
-.ph{background:repeating-linear-gradient(135deg,#D3D4D0 0 2px,#E2E3DF 2px 12px);display:flex;align-items:center;justify-content:center;text-align:center;font:600 10px/1.3 var(--mono);color:#3a3c40;letter-spacing:.06em;text-transform:uppercase}
-.label{font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+.wrap{max-width:1360px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:36px 56px;display:flex;flex-direction:column;gap:30px}
+.r{color:var(--red)}
+h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
+.g{color:var(--green)}
+.label{font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.photo{background:repeating-linear-gradient(135deg,#E6E6E3 0 2px,#F2F2F0 2px 12px);display:flex;align-items:flex-end;justify-content:center;font:600 9px/1.3 var(--mono);color:#6b6e73;letter-spacing:.06em;text-transform:uppercase;padding-bottom:8%}
+.ul{display:block;width:var(--w,58%);height:auto;margin-top:var(--mt,2.4cqw)}
 
 /* header */
-.head{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:end;border-bottom:1px solid #CFCFCA;padding-bottom:28px}
-@media (max-width:960px){.head{grid-template-columns:minmax(0,1fr)}}
-.wm{font-family:var(--serif);line-height:.92;color:var(--ink)}
-.wm .a{display:block;font-weight:600;font-size:clamp(52px,7vw,92px);letter-spacing:-.03em}
-.wm .b{display:block;font-size:clamp(24px,3vw,38px);margin-top:8px;letter-spacing:-.01em}
-.desc{font:400 15px/1.5 var(--grot);margin-top:14px;color:var(--grey)}
-.pal{display:flex;gap:10px;flex-wrap:wrap}
-.pal div{display:flex;flex-direction:column;gap:6px;font:11px/1.35 var(--mono);color:var(--grey)}
-.pal i{width:64px;height:64px;border-radius:50%;display:block;border:1px solid #CFCFCA}
-.rules{display:flex;flex-direction:column;gap:6px;font:14px/1.45 var(--grot)}
-.rules span{font-family:var(--mono);color:var(--red);font-weight:600;margin-right:6px}
-.notice{font:12px var(--mono);color:var(--grey);background:#F6F6F3;border:1px dashed #BDBDB7;border-radius:4px;padding:8px 12px;align-self:flex-start}
+.head{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:0;border-bottom:1px solid var(--line);padding-bottom:26px}
+.head > div{padding:0 24px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.head > div:first-child{padding-left:0;border-left:0}
+@media (max-width:1060px){.head{grid-template-columns:1fr 1fr;row-gap:26px}.head > div:nth-child(3){padding-left:0;border-left:0}}
+@media (max-width:620px){.head{grid-template-columns:minmax(0,1fr)}.head > div{padding-left:0;border-left:0}}
+.wm{font-family:var(--serif);line-height:.88;color:var(--ink)}
+.wm .a{display:block;font-weight:700;font-size:clamp(56px,6.6vw,96px);letter-spacing:-.035em}
+.wm .b{display:block;font-weight:500;font-size:clamp(28px,3vw,42px);margin-top:6px;letter-spacing:-.015em}
+.desc{font:italic 400 19px/1.3 var(--serif);margin-top:10px}
+.purpose{font:600 22px/1.2 var(--serif);border-left:4px solid var(--green);padding-left:16px;letter-spacing:-.01em}
+.msg{display:flex;flex-direction:column;gap:10px;font:500 18px/1.25 var(--serif)}
+.msg div{display:grid;grid-template-columns:38px 1fr;gap:6px}
+.msg span{font:600 16px var(--mono);color:var(--green)}
+.lines{display:flex;flex-direction:column;gap:10px}
+.lines div{display:flex;flex-direction:column;gap:2px}
+.lines small{font:600 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+.lines b{font:600 17px/1.25 var(--serif)}
 
 /* board grid */
 .board{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:22px;align-items:start}
 .s8{grid-column:span 8}.s4{grid-column:span 4}.s6{grid-column:span 6}.s12{grid-column:span 12}.s3{grid-column:span 3}
-@media (max-width:960px){.s8,.s4,.s6,.s3{grid-column:span 12}}
-.cardlabel{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+@media (max-width:980px){.s8,.s4,.s6,.s3{grid-column:span 12}}
+.cardlabel{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.cardlabel .note{font:11px var(--mono);color:var(--grey)}
 
 /* device frames */
-.browser{background:var(--paper);border-radius:12px;overflow:hidden;box-shadow:0 1px 0 #cfcfca,0 18px 40px -20px rgba(18,20,23,.35);container-type:inline-size}
-.bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--ui-line);font:13px var(--sys);color:var(--ui-muted)}
-.bar .dots{display:flex;gap:6px}.bar .dots i{width:10px;height:10px;border-radius:50%;background:#D9D9D9;display:block}
-.bar .url{flex:1;background:#F2F2F2;border-radius:999px;padding:5px 12px;font-size:12px;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.phone{background:#111;border-radius:42px;padding:10px;box-shadow:0 18px 40px -20px rgba(18,20,23,.45);max-width:360px;margin:0 auto}
-.screen{background:var(--paper);border-radius:33px;overflow:hidden;container-type:inline-size}
+.browser{background:var(--paper);border:1px solid var(--frame);border-radius:12px;overflow:hidden;container-type:inline-size}
+.bar{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--ui-line);font:13px var(--sys);color:var(--ui-muted)}
+.bar .dots{display:flex;gap:6px}.bar .dots i{width:9px;height:9px;border-radius:50%;background:#D9D9D9;display:block}
+.bar .url{flex:1;background:#F4F4F4;border-radius:999px;padding:5px 12px;font-size:12px;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#333}
+.phone{background:var(--ink);border-radius:42px;padding:9px;max-width:360px;margin:0 auto}
+.screen{background:var(--paper);border-radius:34px;overflow:hidden;container-type:inline-size}
 .status{display:flex;justify-content:space-between;padding:12px 22px 6px;font:600 13px var(--sys)}
 
-/* banner (shared) */
-.banner{aspect-ratio:16/4.2;background:var(--paper);position:relative;overflow:hidden;border-bottom:1px solid var(--ui-line);display:grid;grid-template-columns:1.25fr 1fr;align-items:center;padding:0 8%}
-.banner .bw{font-family:var(--serif);line-height:.9}
-.banner .bw .a{display:block;font-weight:600;font-size:7.6cqw;letter-spacing:-.03em}
-.banner .bw .b{display:block;font-size:3.1cqw;margin-top:.6cqw}
-.banner .bt{display:flex;flex-direction:column;gap:1.1cqw;font-family:var(--mono);font-size:1.45cqw;color:var(--grey);border-left:2px solid var(--red);padding-left:2cqw}
-.banner .bt s{text-decoration-color:var(--red);text-decoration-thickness:.25cqw}
-.banner .bt b{color:var(--ink);font-weight:600}
-.banner svg{position:absolute;right:2%;bottom:8%;width:12%;height:auto}
+/* banner */
+.banner{background:var(--paper);display:grid;grid-template-columns:1fr 1.15fr;align-items:center;gap:4%;padding:0 7%;border-bottom:1px solid var(--ui-line);container-type:inline-size}
+.banner .bw{font-family:var(--serif);line-height:.88}
+.banner .bw .a{display:block;font-weight:700;font-size:var(--wa,9cqw);letter-spacing:-.035em}
+.banner .bw .b{display:block;font-weight:500;font-size:var(--wb,4.1cqw);margin-top:.5cqw}
+.banner .bl{border-left:.9cqw solid var(--green);padding-left:3cqw}
+.banner .bl p{margin:0;font:400 var(--bs,5.4cqw)/1.08 var(--serif);letter-spacing:-.015em}
+
+/* avatar */
+.av{border-radius:50%;background:var(--paper);border:1px solid var(--frame);display:flex;align-items:center;justify-content:center;text-align:center;font:700 var(--fs,11px)/1.12 var(--serif);flex:none;container-type:inline-size}
 
 /* YouTube */
 .yt-body{padding:2.4cqw 3cqw 0;display:flex;gap:2.4cqw;align-items:center;flex-wrap:wrap}
-.yt-av{width:12cqw;height:12cqw;border-radius:50%;flex:none;overflow:hidden}
-.yt-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:.5cqw;font-size:max(12px,1.35cqw);color:var(--ui-muted)}
-.yt-meta h3{margin:0;font:700 max(18px,2.8cqw)/1.1 var(--sys);color:var(--ui)}
-.yt-meta p{margin:0;max-width:62ch}
+.yt-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:.5cqw;font-size:max(12px,1.3cqw);color:var(--ui-muted)}
+.yt-meta h3{margin:0;font:700 max(18px,2.6cqw)/1.1 var(--sys);color:var(--ui)}
+.yt-meta p{margin:0;max-width:70ch;color:#333}
 .sub{background:var(--ui);color:#fff;border-radius:999px;padding:1cqw 2.2cqw;font:600 max(12px,1.4cqw) var(--sys);border:0}
-.tabs{display:flex;gap:3cqw;padding:2cqw 3cqw 0;border-bottom:1px solid var(--ui-line);font:600 max(12px,1.4cqw) var(--sys);color:var(--ui-muted);overflow-x:auto}
+.tabs{display:flex;gap:3cqw;padding:2cqw 3cqw 0;border-bottom:1px solid var(--ui-line);font:600 max(12px,1.35cqw) var(--sys);color:var(--ui-muted);overflow-x:auto}
 .tabs span{padding-bottom:1.2cqw;white-space:nowrap}
 .tabs span.on{color:var(--ui);border-bottom:2px solid var(--ui)}
 .yt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6cqw;padding:2.2cqw 3cqw 3cqw}
 .yt-grid .t{display:flex;flex-direction:column;gap:.6cqw;font-size:max(11px,1.2cqw);color:var(--ui-muted);min-width:0}
 .yt-grid .t b{color:var(--ui);font-size:max(12px,1.35cqw);line-height:1.3}
 
-/* thumbnails */
-.th{aspect-ratio:16/9;border-radius:8px;overflow:hidden;display:grid;grid-template-columns:1fr 40%;container-type:inline-size;position:relative}
-.th .tx{padding:6cqw 5cqw;display:flex;flex-direction:column;justify-content:center;gap:2.2cqw;min-width:0}
-.th .k{font:600 3.1cqw var(--mono);letter-spacing:.04em}
-.th h4{margin:0;font:900 10.6cqw/.95 var(--grot);letter-spacing:-.035em}
-.th h4.serif{font:700 10.4cqw/.98 var(--serif);letter-spacing:-.025em}
-.th .box{background:var(--red);color:#fff;padding:0 1.4cqw}
-.th .ph{font-size:2.6cqw}
-.th .dur{position:absolute;right:2.4cqw;bottom:2.4cqw;background:rgba(0,0,0,.8);color:#fff;font:600 3cqw var(--sys);padding:.4cqw 1.2cqw;border-radius:4px}
-.th.white{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
-.th.ink{background:var(--ink);color:#fff}
-.th.wash{background:var(--wash);color:var(--ink)}
-.th .strip{border-left:1.6cqw solid var(--red)}
+/* thumbnail */
+.th{aspect-ratio:16/9;border-radius:8px;overflow:hidden;display:grid;grid-template-columns:1fr 30%;container-type:inline-size;position:relative;background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+.th .tx{padding:4.5cqw 4.5cqw;display:flex;flex-direction:column;justify-content:center;min-width:0}
+.tag{font:700 3.1cqw var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:2cqw}
+.th h4{margin:0;font:400 9.6cqw/1 var(--serif);letter-spacing:-.025em}
+.th .photo{font-size:2.4cqw}
+.th .dur{position:absolute;right:2.4cqw;bottom:2.4cqw;background:var(--ink);color:#fff;font:600 3cqw var(--sys);padding:.4cqw 1.2cqw;border-radius:4px}
+.black{background:var(--ink) !important;color:#fff !important;border-color:var(--ink) !important}
+.black .tag{color:var(--yellow);font-size:1.5em}
+.black .ul,.black.tile .ul{--w:86%}
 
 /* Instagram */
-.ig-top{display:flex;justify-content:space-between;align-items:center;padding:4px 16px 10px;font:700 16px var(--sys)}
-.ig-prof{display:flex;align-items:center;gap:18px;padding:4px 16px 10px}
-.ig-av{width:84px;height:84px;border-radius:50%;padding:3px;background:#DADAD5;flex:none}
-.ig-av .ph{width:100%;height:100%;border-radius:50%;font-size:8px}
-.ig-stats{display:flex;gap:16px;flex:1;justify-content:space-around;text-align:center;font:13px/1.2 var(--sys)}
+.ig-top{display:flex;justify-content:space-between;align-items:center;padding:4px 16px 10px;font:700 17px var(--sys)}
+.ig-prof{display:flex;align-items:center;gap:16px;padding:4px 16px 10px}
+.ig-stats{display:flex;gap:14px;flex:1;justify-content:space-around;text-align:center;font:13px/1.2 var(--sys)}
 .ig-stats b{display:block;font-size:16px}
 .ig-bio{padding:0 16px 10px;font:13px/1.4 var(--sys)}
 .ig-bio b{display:block}
@@ -99,84 +104,135 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
 .ig-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0 16px 12px}
 .ig-btns span{text-align:center;font:600 13px var(--sys);padding:7px;border-radius:8px;background:#EFEFEF}
 .ig-btns span.f{background:#0095F6;color:#fff}
-.ig-hl{display:flex;gap:12px;padding:0 16px 14px;overflow-x:auto}
+.ig-hl{display:flex;gap:11px;padding:0 16px 14px;overflow-x:auto}
 .ig-hl div{display:flex;flex-direction:column;align-items:center;gap:5px;font:11px var(--sys);flex:none}
-.ig-hl i{width:56px;height:56px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font:600 13px var(--serif);font-style:normal;background:var(--paper)}
-.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.tile{aspect-ratio:4/5;container-type:inline-size;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:9cqw 8cqw}
-.tile h5{margin:0;font:600 13cqw/1.02 var(--serif);letter-spacing:-.02em}
-.tile .k{font:600 6.4cqw var(--mono)}
-.tile.w{background:var(--paper);color:var(--ink)}
-.tile.i{background:var(--ink);color:#fff}
-.tile.r{background:var(--red);color:#fff}
-.tile.g{background:var(--wash);color:var(--ink)}
-.tile .tag{font:600 7cqw/1.6 var(--mono)}
-.tile s{text-decoration-color:var(--red);text-decoration-thickness:1.2cqw}
+.ig-hl i{width:54px;height:54px;border-radius:50%;border:1px solid var(--frame);display:flex;align-items:center;justify-content:center;font:600 10px var(--mono);font-style:normal;background:var(--paper);color:var(--ink);text-align:center;line-height:1.1}
+.ig-hl i.e{font:700 16px var(--serif)}
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#fff}
+.tile{aspect-ratio:4/5;container-type:inline-size;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:9% 8%;background:var(--paper);color:var(--ink);outline:1px solid var(--line);outline-offset:-1px}
+.tile .tag{font-size:6.2cqw;margin:0}
+.tile h5{margin:0;font:400 15cqw/1.02 var(--serif);letter-spacing:-.02em}
+.tile .ul{--w:68%;--mt:4cqw}
+.tile .mk{font:700 7cqw var(--serif);align-self:flex-end}
 
 /* LinkedIn / Facebook */
-.li-head{position:relative}
-.li-logo{position:absolute;left:4%;bottom:-6cqw;width:13cqw;height:13cqw;background:var(--paper);border:1px solid var(--line);border-radius:6px;display:flex;align-items:center;justify-content:center;font:600 5cqw var(--serif)}
-.li-body{padding:8cqw 4% 4cqw;display:flex;flex-direction:column;gap:1.2cqw;font-size:max(12px,2.2cqw);color:var(--ui-muted)}
-.li-body h3{margin:0;font:700 max(17px,3.8cqw)/1.15 var(--sys);color:var(--ui)}
-.li-body .tag{color:var(--ui);font-size:max(13px,2.5cqw)}
-.li-btns{display:flex;gap:2cqw;margin-top:1.4cqw;flex-wrap:wrap}
-.li-btns span{border-radius:999px;padding:1.2cqw 3.4cqw;font:600 max(12px,2.3cqw) var(--sys);border:1px solid #0A66C2;color:#0A66C2}
-.li-btns span.f{background:#0A66C2;color:#fff}
-.fb-av{position:absolute;left:4%;bottom:-8cqw;width:17cqw;height:17cqw;border-radius:50%;border:4px solid #fff;overflow:hidden}
-.fb-av .ph{width:100%;height:100%;font-size:1.8cqw}
-.fb-btns span{border-color:var(--plat-blue);color:var(--plat-blue)}
-.fb-btns span.f{background:var(--plat-blue);color:#fff}
+.pg-head{position:relative}
+.li-logo{position:absolute;left:4%;bottom:-6cqw;width:12cqw;height:12cqw;background:var(--paper);border:1px solid var(--frame);border-radius:6px;display:flex;align-items:center;justify-content:center;font:700 5cqw var(--serif)}
+.pg-body{padding:8cqw 4% 4cqw;display:flex;flex-direction:column;gap:1.2cqw;font-size:max(12px,2.1cqw);color:var(--ui-muted)}
+.pg-body h3{margin:0;font:700 max(17px,3.6cqw)/1.15 var(--sys);color:var(--ui)}
+.pg-body .tl{color:var(--ui);font-size:max(13px,2.4cqw)}
+.btns{display:flex;gap:2cqw;margin-top:1.4cqw;flex-wrap:wrap}
+.btns span{border-radius:999px;padding:1.1cqw 3.4cqw;font:600 max(12px,2.2cqw) var(--sys);border:1px solid #0A66C2;color:#0A66C2}
+.btns span.f{background:#0A66C2;color:#fff}
+.fb .btns span{border-color:#0866FF;color:#0866FF}
+.fb .btns span.f{background:#0866FF;color:#fff}
+.fb-av{position:absolute;left:4%;bottom:-8cqw;width:16cqw;height:16cqw;border:4px solid #fff;border-radius:50%}
 
-/* LinkedIn post */
-.post{background:var(--paper);border-radius:10px;box-shadow:0 1px 0 #cfcfca,0 18px 40px -24px rgba(18,20,23,.35);overflow:hidden;font:14px/1.45 var(--sys)}
+/* content titles */
+.titles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+@media (max-width:980px){.titles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.titles{grid-template-columns:minmax(0,1fr)}}
+.tt{aspect-ratio:4/3;border:1px solid var(--line);border-radius:8px;container-type:inline-size;padding:8% 7%;display:flex;flex-direction:column;justify-content:center;background:var(--paper);color:var(--ink);overflow:hidden}
+.tt .tag{font-size:4.6cqw}
+.tt h4{margin:0;font:400 14cqw/1.02 var(--serif);letter-spacing:-.022em}
+.tt .ul{--w:62%;--mt:4cqw}
+
+/* reel, post, pack */
+.reel{aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:var(--paper);container-type:inline-size;display:flex;flex-direction:column;border:1px solid var(--line)}
+.reel .photo{flex:1;font-size:3.6cqw}
+.reel .cap{padding:8cqw 7cqw 9cqw;display:flex;flex-direction:column}
+.reel .tag{font-size:4.4cqw}
+.reel h5{margin:0;font:400 12.4cqw/1.02 var(--serif);letter-spacing:-.02em}
+.reel .ul{--w:62%;--mt:4cqw}
+.post{background:var(--paper);border:1px solid var(--frame);border-radius:10px;overflow:hidden;font:14px/1.45 var(--sys)}
 .post .who{display:flex;gap:10px;align-items:center;padding:14px 16px 8px}
-.post .who .ph{width:44px;height:44px;border-radius:50%;font-size:7px}
+.post .who .av{width:48px;height:48px;--fs:5.6px;line-height:1.02}
 .post .who b{display:block;font-size:14px}
 .post .who span{font-size:12px;color:var(--ui-muted)}
-.post p{margin:0;padding:0 16px 12px}
-.post .img{padding-block:36px;background:var(--paper);border-top:1px solid var(--ui-line);border-bottom:1px solid var(--ui-line);container-type:inline-size;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 6cqw;gap:4cqw}
-.post .img .l{font:600 3cqw var(--mono);color:var(--grey);display:flex;flex-direction:column;gap:1.4cqw}
-.post .img .l s{text-decoration-color:var(--red);text-decoration-thickness:.4cqw}
-.post .img h5{margin:0;font:600 6.4cqw/1.02 var(--serif);letter-spacing:-.02em}
+.post p{margin:0;padding:0 16px 12px;color:#222}
+.post .img{aspect-ratio:1.91/1;background:var(--paper);border-top:1px solid var(--ui-line);border-bottom:1px solid var(--ui-line);container-type:inline-size;padding:0 7%;display:flex;flex-direction:column;justify-content:center}
+.post .img .tag{font-size:2.6cqw}
+.post .img h5{margin:0;font:400 8.8cqw/1.02 var(--serif);letter-spacing:-.02em;max-width:85%}
+.post .img .ul{--w:38%;--mt:2.6cqw}
 .post .act{display:flex;justify-content:space-around;padding:10px;font:600 13px var(--sys);color:var(--ui-muted)}
+.pack{aspect-ratio:1/1.414;border:1px solid var(--line);border-radius:6px;background:var(--paper);container-type:inline-size;padding:9% 8%;display:flex;flex-direction:column;justify-content:space-between}
+.pack .top{font:700 6.2cqw var(--serif)}
+.pack .main{border-left:2.2cqw solid var(--green);padding-left:5cqw}
+.pack h5{margin:0;font:700 15cqw/.95 var(--serif);letter-spacing:-.03em}
+.pack .three{font:500 8cqw/1.25 var(--serif);margin-top:5cqw}
+.pack .foot{font:600 3.4cqw var(--mono);letter-spacing:.12em;text-transform:uppercase}
 
-/* reel */
-.reel{aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:var(--paper);container-type:inline-size;display:flex;flex-direction:column;box-shadow:0 18px 40px -24px rgba(18,20,23,.4)}
-.reel .ph{flex:1;font-size:4cqw}
-.reel .cap{padding:7cqw;display:flex;flex-direction:column;gap:3cqw;border-top:2cqw solid var(--red)}
-.reel .cap .k{font:600 4.2cqw var(--mono);color:var(--red)}
-.reel .cap h5{margin:0;font:600 9cqw/1.03 var(--serif);letter-spacing:-.02em}
-.reel .cap s{text-decoration-color:var(--red);text-decoration-thickness:1cqw}
+/* more templates */
+.more{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,.9fr) minmax(0,1.9fr);gap:16px;align-items:start}
+@media (max-width:980px){.more{grid-template-columns:minmax(0,1fr)}}
+.story{aspect-ratio:9/16;border:1px solid var(--line);border-radius:12px;container-type:inline-size;padding:12% 9%;display:flex;flex-direction:column;justify-content:space-between;background:var(--paper)}
+.story .tag{font-size:5cqw}
+.story h5{margin:0;font:400 16cqw/1.04 var(--serif);letter-spacing:-.02em}
+.story .ul{--w:66%;--mt:5cqw}
+.story .sig,.news .sig{font:700 5.4cqw var(--serif)}
+.slide{aspect-ratio:4/5;border:1px solid var(--line);border-radius:8px;container-type:inline-size;padding:10% 9%;display:flex;flex-direction:column;justify-content:center;background:var(--paper)}
+.slide .tag{font-size:4cqw}
+.slide h5{margin:0 0 6cqw;font:400 12.4cqw/1.04 var(--serif);letter-spacing:-.02em}
+.slide ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3.4cqw;font:500 5.6cqw/1.2 var(--serif)}
+.slide li{display:grid;grid-template-columns:12cqw 1fr}
+.slide li span{font:600 5cqw var(--mono);color:var(--green)}
+.news{aspect-ratio:3/1;border:1px solid var(--line);border-radius:8px;container-type:inline-size;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:var(--paper);border-left:1px solid var(--line)}
+.news > div{border-left:1.3cqw solid var(--green);padding-left:3cqw}
+.news .tag{font-size:1.9cqw}
+.news h5{margin:0;font:400 7.6cqw/1 var(--serif);letter-spacing:-.025em}
+.news .sig{font-size:2.4cqw}
 
-.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid #CFCFCA;padding-top:18px;font:12px/1.5 var(--mono);color:var(--grey)}
+.news h5 .r{font-size:1em}
+
+/* ratio panel */
+.ratio{border-top:1px solid var(--line);padding-top:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:32px}
+@media (max-width:900px){.ratio{grid-template-columns:minmax(0,1fr)}}
+.ratio .bar{display:flex;height:46px;border:1px solid var(--frame);border-radius:4px;overflow:hidden}
+.ratio .bar i{display:block;height:100%}
+.ratio table{border-collapse:collapse;width:100%;font:13px var(--mono)}
+.ratio th,.ratio td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.ratio th{font-weight:600;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
+.ratio td i{display:inline-block;width:12px;height:12px;border:1px solid var(--frame);vertical-align:-2px;margin-right:8px}
+.rules{display:flex;flex-direction:column;gap:8px;font:14px/1.45 var(--sys)}
+.rules span{font:600 13px var(--mono);color:var(--green);margin-right:6px}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px;font:11.5px/1.5 var(--mono);color:var(--grey)}
 </style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="stroke" d="M4 12 C 46 7, 120 6, 196 5" fill="none" stroke-width="13" stroke-linecap="round"/>
+    <path id="strokeY" d="M10 20 C 50 15, 120 13, 190 11" fill="none" stroke-width="24" stroke-linecap="round"/>
+  </defs>
+</svg>
 
 <div class="wrap">
 
   <!-- HEADER -->
   <header class="head">
     <div>
-      <span class="label">Social media brand board / Route [E] Evidence / Proof palette</span>
-      <div class="wm" style="margin-top:18px" aria-label="Legal AI with Andrew E"><span class="a">Legal AI</span><span class="b">with Andrew <span class="br">[</span>E<span class="br">]</span></span></div>
+      <span class="label">Social media brand board</span>
+      <div class="wm" aria-label="Legal AI with Andrew E"><span class="a">Legal AI</span><span class="b">with Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
       <p class="desc">Practical AI for Australian legal matters.</p>
     </div>
-    <div style="display:flex;flex-direction:column;gap:14px">
-      <span class="label">Palette</span>
-      <div class="pal">
-        <div><i style="background:#FFFFFF"></i>Paper<br>#FFFFFF</div>
-        <div><i style="background:#121417"></i>Ink<br>#121417</div>
-        <div><i style="background:#D4231B"></i>Correction<br>#D4231B</div>
+    <div>
+      <span class="label">Core purpose</span>
+      <p class="purpose">Reducing the information imbalance in Australia's legal system through practical AI education.</p>
+    </div>
+    <div>
+      <span class="label">Core messaging</span>
+      <div class="msg">
+        <div><span>[1]</span>Get more from AI.</div>
+        <div><span>[2]</span>Get more from your lawyer.</div>
+        <div><span>[3]</span>Prepare better. Work better with your lawyer.</div>
       </div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <span class="label">Rules on this board</span>
-      <div class="rules">
-        <div><span>[1]</span>Red marks a correction, never decoration.</div>
-        <div><span>[2]</span>One red word or mark per asset.</div>
-        <div><span>[3]</span>Real photo of Andrew only.</div>
-        <div><span>[4]</span>All words set as live type.</div>
+    <div>
+      <span class="label">Lines</span>
+      <div class="lines">
+        <div><small>Main line / banners</small><b>Stop paying a lawyer to sort out your paperwork.</b></div>
+        <div><small>Companion / self-represented</small><b>Pay for advice, not admin.</b></div>
+        <div><small>Softer line / LinkedIn</small><b>Get more from AI. Get more from your lawyer.</b></div>
       </div>
-      <span class="notice">Concept mock-up. Photo slots are placeholders. All metrics are zero.</span>
     </div>
   </header>
 
@@ -184,40 +240,35 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
 
     <!-- YOUTUBE -->
     <div class="s8">
-      <div class="cardlabel"><span class="label">YouTube / channel home</span><span class="label">Banner 2560 x 1440, text inside safe band</span></div>
+      <div class="cardlabel"><span class="label">YouTube / channel home</span><span class="note">Banner 2560 x 1440. Main line.</span></div>
       <div class="browser">
         <div class="bar"><div class="dots"><i></i><i></i><i></i></div><span class="url">youtube.com/@legalaiwithandrewe</span></div>
-        <div class="banner">
-          <div class="bw"><span class="a">Legal AI</span><span class="b">with Andrew <span class="br">[</span>E<span class="br">]</span></span></div>
-          <div class="bt">
-            <span>AI answer: <s>Payment made.</s></span>
-            <span>Source: "I have not checked the account."</span>
-            <b><span class="br">[</span>Confidence is not accuracy.<span class="br">]</span></b>
-          </div>
-          <svg viewBox="0 0 120 40" aria-hidden="true"><path d="M4 22 C 30 18, 70 26, 116 17" fill="none" stroke="#D4231B" stroke-width="4" stroke-linecap="round"/></svg>
+        <div class="banner" data-asset="YouTube banner" style="aspect-ratio:16/4.4">
+          <div class="bw"><span class="a">Legal AI</span><span class="b">with Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
+          <div class="bl"><p>Stop paying a lawyer to sort out your <span class="r">paperwork.</span></p><svg class="ul" viewBox="0 0 200 16" aria-hidden="true" style="--w:44%;--mt:1.6cqw"><use href="#stroke" stroke="#006E30"/></svg></div>
         </div>
         <div class="yt-body">
-          <div class="yt-av ph">Andrew<br>real photo</div>
+          <div class="av" data-asset="Avatar" style="width:12cqw;height:12cqw;--fs:1.75cqw"><span>Legal AI<br>with<br>Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
           <div class="yt-meta">
             <h3>Legal AI with Andrew E</h3>
             <span>@legalaiwithandrewe · 0 subscribers · 0 videos</span>
-            <p>Practical, responsible ways to use AI in Australian legal matters. Two learning paths: with a lawyer, and without one.</p>
+            <p>Practical AI for Australian legal matters. Methods built from 20+ years in legal practice and litigation. Learn to use AI to organise your matter, prepare better and work more effectively with your lawyer. General education only, not legal advice.</p>
           </div>
           <button class="sub" type="button">Subscribe</button>
         </div>
         <div class="tabs"><span class="on">Home</span><span>Videos</span><span>Shorts</span><span>Playlists</span><span>Community</span></div>
         <div class="yt-grid">
           <div class="t">
-            <div class="th white"><div class="tx"><span class="k br">[AI LEGAL REALITY CHECK]</span><h4 class="serif">Real citation. <span class="br">[</span>Wrong<span class="br">]</span> argument.</h4></div><div class="ph strip">Photo</div><span class="dur">9:42</span></div>
-            <b>An AI citation can be real and still support the wrong argument</b><span>Legal AI with Andrew E</span>
+            <div class="th" data-asset="Thumbnail: Preparation"><div class="tx"><span class="tag">Preparation</span><h4>Your 4,000 emails are not a <span class="r">chronology.</span></h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div><div class="photo" data-photo>Photo</div><span class="dur">9:12</span></div>
+            <b>Turn years of emails and messages into a sourced chronology</b><span>Legal AI with Andrew E</span>
           </div>
           <div class="t">
-            <div class="th ink"><div class="tx"><span class="k" style="color:#FF8A80">PROMPT, THEN PROVE</span><h4>Sounds right. <span class="box">Is it?</span></h4></div><div class="ph strip">Photo</div><span class="dur">11:05</span></div>
-            <b>Why AI sounds legally confident when it is incomplete</b><span>Legal AI with Andrew E</span>
+            <div class="th black" data-asset="Thumbnail: AI rules"><div class="tx"><span class="tag">AI rules</span><h4>ChatGPT will agree. That's the <span class="r">problem.</span></h4><svg class="ul" viewBox="0 0 200 30" aria-hidden="true"><use href="#strokeY" stroke="#FFD600"/></svg></div><div class="photo" data-photo style="background:#121417;color:#9a9da3">Photo</div><span class="dur">10:48</span></div>
+            <b>Why AI agrees with you, and what to check before you rely on it</b><span>Legal AI with Andrew E</span>
           </div>
           <div class="t">
-            <div class="th wash"><div class="tx"><span class="k br">[COURT RULE CHECK]</span><h4 class="serif">Check your court first.</h4></div><div class="ph strip">Photo</div><span class="dur">8:17</span></div>
-            <b>Before asking AI to write your affidavit, check the rules for your court</b><span>Legal AI with Andrew E</span>
+            <div class="th" data-asset="Thumbnail: With a lawyer"><div class="tx"><span class="tag">With a lawyer</span><h4>Brief a lawyer in <span class="r">one page.</span></h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div><div class="photo" data-photo>Photo</div><span class="dur">7:36</span></div>
+            <b>How to brief a lawyer in one page, so paid time goes on advice</b><span>Legal AI with Andrew E</span>
           </div>
         </div>
       </div>
@@ -225,116 +276,161 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
 
     <!-- INSTAGRAM -->
     <div class="s4">
-      <div class="cardlabel"><span class="label">Instagram / profile</span><span class="label">Bio 129 / 150</span></div>
+      <div class="cardlabel"><span class="label">Instagram / profile</span><span class="note">Bio 144 / 150</span></div>
       <div class="phone"><div class="screen">
         <div class="status"><span>9:41</span><span>●●● ▮</span></div>
         <div class="ig-top"><span>legalaiwithandrewe</span><span>···</span></div>
         <div class="ig-prof">
-          <div class="ig-av"><div class="ph">Real<br>photo</div></div>
+          <div class="av" style="width:84px;height:84px;--fs:11px"><span>Legal AI<br>with<br>Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
           <div class="ig-stats"><div><b>0</b>posts</div><div><b>0</b>followers</div><div><b>0</b>following</div></div>
         </div>
-        <div class="ig-bio"><b>Legal AI with Andrew E</b>AI for Australian legal matters.<br>Practical prompts, preparation &amp; source checks.<br>With a lawyer or on your own.<br>Free guides below.<br><span class="lk">legalaiwithandrewe.com.au/start</span></div>
+        <div class="ig-bio"><b>Legal AI with Andrew E</b>Practical AI for Australian legal matters.<br>Methods from 20+ yrs in practice &amp; litigation.<br>Use AI to prepare better.<br>Education, not legal advice.<br><span class="lk">legalaiwithandrewe.com.au/start</span></div>
         <div class="ig-btns"><span class="f">Follow</span><span>Message</span></div>
         <div class="ig-hl">
-          <div><i>Start</i>Start here</div>
-          <div><i><span class="br">[</span>✓<span class="br">]</span></i>Checks</div>
-          <div><i>§</i>Court rules</div>
-          <div><i>⇄</i>Lawyer</div>
-          <div><i><span class="br">[</span>!<span class="br">]</span></i>Fixes</div>
+          <div><i class="e"><span><span class="r">[</span>E<span class="r">]</span></span></i>Start</div>
+          <div><i>PREP</i>Preparation</div>
+          <div><i>AFF</i>Affidavits</div>
+          <div><i>DATES</i>Dates</div>
+          <div><i>LAWYER</i>Lawyer</div>
+          <div><i>AI</i>AI rules</div>
         </div>
         <div class="ig-grid">
-          <div class="tile w"><span class="k br">[Reality check]</span><h5>Real citation. <span class="br">[</span>Wrong<span class="br">]</span> argument.</h5></div>
-          <div class="tile i"><span class="k" style="color:#FF8A80">Prompt, then prove</span><h5 style="font-family:var(--grot);font-weight:900;letter-spacing:-.03em">Sounds right. <span style="background:#D4231B;padding:0 2cqw">Is it?</span></h5></div>
-          <div class="tile ph" style="padding:0">Reel<br>real photo</div>
-          <div class="tile g"><span class="k">Your method</span><div class="tag"><span class="br">[</span>FACT<span class="br">]</span><br><span class="br">[</span>ALLEGATION<span class="br">]</span><br><span class="br">[</span>INFERENCE<span class="br">]</span><br><span class="br">[</span>UNKNOWN<span class="br">]</span></div></div>
-          <div class="tile r"><span class="k">Without a lawyer</span><h5>Find your court first.</h5></div>
-          <div class="tile w"><span class="k br">[Prompt, then prove]</span><h5 style="font-size:10.4cqw">"I have not checked" became <s>"payment made."</s></h5></div>
-          <div class="tile i"><span class="k" style="color:#FF8A80">Bring this to your lawyer</span><h5><s style="text-decoration-color:#D4231B">30 pages.</s><br>One page.</h5></div>
-          <div class="tile w"><span class="k br">[The better question]</span><h5>The prompt is not the result.</h5></div>
-          <div class="tile ph" style="padding:0">Workshop<br>real photo</div>
+          <div class="tile" data-asset="IG: Pay for advice"><span class="tag">Preparation</span><div><h5>Pay for advice, not <span class="r">admin.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
+          <div class="tile black" data-asset="IG: Public chatbot"><span class="tag">AI rules</span><div><h5>Don't paste your file into a public <span class="r">chatbot.</span></h5><svg class="ul" viewBox="0 0 200 30" aria-hidden="true"><use href="#strokeY" stroke="#FFD600"/></svg></div></div>
+          <div class="tile photo" data-photo style="padding:0;justify-content:flex-end">Reel<br>real photo</div>
+          <div class="tile" data-asset="IG: Own words"><span class="tag">Affidavits</span><div><h5>Your evidence, in your own <span class="r">words.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
+          <div class="tile" data-asset="IG: Stop mixing"><span class="tag">Affidavits</span><div><h5>Facts, allegations, inferences. Stop <span class="r">mixing</span> them.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
+          <div class="tile" data-asset="IG: Track every date"><span class="tag">Dates</span><div><h5>Track every date. Then <span class="r">check</span> it yourself.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
+          <div class="tile" data-asset="IG: Duty lawyer"><span class="tag">With a lawyer</span><div><h5>Don't spend the 20 minutes finding the <span class="r">PDF.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
+          <div class="tile photo" data-photo style="padding:0;justify-content:flex-end">Workshop<br>real photo</div>
+          <div class="tile" data-asset="IG: All the hats"><span class="tag">Preparation</span><div><h5>You're wearing all the <span class="r">hats.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
         </div>
       </div></div>
     </div>
 
     <!-- LINKEDIN -->
     <div class="s6">
-      <div class="cardlabel"><span class="label">LinkedIn / company page</span><span class="label">Tagline 88 / 120</span></div>
+      <div class="cardlabel"><span class="label">LinkedIn / company page</span><span class="note">Tagline 84 / 120. Softer line.</span></div>
       <div class="browser">
         <div class="bar"><div class="dots"><i></i><i></i><i></i></div><span class="url">linkedin.com/company/legal-ai-with-andrew-e</span></div>
-        <div class="li-head">
-          <div class="banner" style="aspect-ratio:4/1">
-            <div class="bw"><span class="a" style="font-size:6.6cqw">Legal AI</span><span class="b" style="font-size:2.8cqw">with Andrew <span class="br">[</span>E<span class="br">]</span></span></div>
-            <div class="bt" style="font-size:1.9cqw"><span>Client AI work:</span><b>value <span class="br">+</span> review burden</b></div>
+        <div class="pg-head">
+          <div class="banner" data-asset="LinkedIn banner" style="aspect-ratio:4/1;--wa:7.4cqw;--wb:3.4cqw;--bs:4.8cqw">
+            <div class="bw"><span class="a">Legal AI</span><span class="b">with Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
+            <div class="bl"><p>Get more from AI. Get more from your <span class="r">lawyer.</span></p></div>
           </div>
-          <div class="li-logo"><span class="br">[</span>E<span class="br">]</span></div>
+          <div class="li-logo" data-asset="LinkedIn logo"><span><span class="r">[</span>E<span class="r">]</span></span></div>
         </div>
-        <div class="li-body">
+        <div class="pg-body">
           <h3>Legal AI with Andrew E</h3>
-          <span class="tag">Practical AI education for Australians handling legal matters, with or without a lawyer.</span>
+          <span class="tl">Practical legal AI education helping Australians overcome information disadvantages.</span>
           <span>Education · Australia · 0 followers</span>
-          <div class="li-btns"><span class="f">+ Follow</span><span>Visit website</span></div>
+          <div class="btns"><span class="f">+ Follow</span><span>Visit website</span></div>
         </div>
       </div>
     </div>
 
     <!-- FACEBOOK -->
     <div class="s6">
-      <div class="cardlabel"><span class="label">Facebook / page</span><span class="label">Intro 89 / 101</span></div>
-      <div class="browser">
+      <div class="cardlabel"><span class="label">Facebook / page</span><span class="note">Intro 91 / 101. Companion line.</span></div>
+      <div class="browser fb">
         <div class="bar"><div class="dots"><i></i><i></i><i></i></div><span class="url">facebook.com/legalaiwithandrewe</span></div>
-        <div class="li-head">
-          <div class="banner" style="aspect-ratio:2.7/1;grid-template-columns:1fr;padding-left:32%">
-            <div class="bt" style="font-size:2.4cqw;gap:1.6cqw"><b style="font-family:var(--serif);font-size:5.2cqw;font-weight:600;line-height:1.02;letter-spacing:-.02em">Using AI without a lawyer?</b><span>First establish your court and any deadline.</span></div>
+        <div class="pg-head">
+          <div class="banner" data-asset="Facebook banner" style="aspect-ratio:2.7/1;grid-template-columns:1fr;padding-left:30%;--bs:7.6cqw">
+            <div class="bl"><p>Pay for advice, not <span class="r">admin.</span></p><p style="font:500 2.6cqw/1.3 var(--serif);margin-top:1.6cqw;color:#121417">Organise your matter. Brief your lawyer. Use AI with care.</p></div>
           </div>
-          <div class="fb-av"><div class="ph">Andrew<br>real photo</div></div>
+          <div class="fb-av"><div class="av" style="width:100%;height:100%;--fs:1.9cqw"><span>Legal AI<br>with<br>Andrew <span class="r">[</span>E<span class="r">]</span></span></div></div>
         </div>
-        <div class="li-body" style="padding-top:10cqw">
+        <div class="pg-body" style="padding-top:10cqw">
           <h3>Legal AI with Andrew E</h3>
-          <span class="tag">Practical AI for Australian legal matters. Better preparation, prompts and source checks.</span>
+          <span class="tl">Practical AI for Australian legal matters. Organise your matter. Get more from your lawyer.</span>
           <span>0 followers · Education website</span>
-          <div class="li-btns fb-btns"><span class="f">Follow</span><span>Message</span></div>
+          <div class="btns"><span class="f">Follow</span><span>Message</span></div>
         </div>
       </div>
     </div>
 
-    <!-- CONTENT ROW -->
+    <!-- CONTENT TITLES -->
+    <div class="s12">
+      <div class="cardlabel"><span class="label">Content titles / five series</span><span class="note">Green series tag and underline on white.</span></div>
+      <div class="titles">
+        <div class="tt" data-asset="Title: Preparation"><span class="tag">Preparation</span><h4>From chaos to a working <span class="r">file.</span></h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
+        <div class="tt" data-asset="Title: Affidavits"><span class="tag">Affidavits</span><h4>What the Court wants in an <span class="r">affidavit.</span></h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
+        <div class="tt" data-asset="Title: Dates"><span class="tag">Dates</span><h4>Track every date. Then <span class="r">check</span> it.</h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
+        <div class="tt" data-asset="Title: With a lawyer"><span class="tag">With a lawyer</span><h4>Make the paid hour <span class="r">count.</span></h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
+        <div class="tt" data-asset="Title: AI rules"><span class="tag">AI rules</span><h4>Family-law AI rules in plain <span class="r">English.</span></h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
+      </div>
+    </div>
+
+    <!-- REEL / POST / PACK -->
     <div class="s3">
-      <div class="cardlabel"><span class="label">Reel or Short cover / 9:16</span></div>
-      <div class="reel">
-        <div class="ph">Andrew to camera<br>real footage</div>
-        <div class="cap"><span class="k">[Prompt, then prove]</span><h5>AI turned "I have not checked" into <s>"payment made."</s></h5></div>
+      <div class="cardlabel"><span class="label">Reel cover / 9:16</span></div>
+      <div class="reel" data-asset="Reel cover">
+        <div class="photo" data-photo>Andrew to camera<br>real footage</div>
+        <div class="cap"><span class="tag">Preparation</span><h5>Stop paying a lawyer to sort out your <span class="r">paperwork.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
       </div>
     </div>
     <div class="s6">
       <div class="cardlabel"><span class="label">LinkedIn / founder post</span></div>
       <div class="post">
-        <div class="who"><div class="ph">Photo</div><div><b>Andrew E</b><span>Founder, Legal AI with Andrew E · 1d</span></div></div>
-        <p>Client AI work can help a matter or bury it. A source-linked one-page summary saves review time. A 30-page AI memo usually costs it. Here is the handoff format I teach, and where it still fails.</p>
-        <div class="img">
-          <div class="l"><span><s>30-page AI memo</s></span><span><s>Unchecked citations</s></span><span style="color:#121417"><span class="br">[</span>1 page, every fact sourced<span class="br">]</span></span></div>
-          <h5>Bring this to your lawyer.</h5>
-        </div>
+        <div class="who"><div class="av"><span>Legal AI<br>with<br>Andrew <span class="r">[</span>E<span class="r">]</span></span></div><div><b>Andrew E</b><span>Founder, Legal AI with Andrew E · 1d</span></div></div>
+        <p>A client who arrives with a sourced chronology, a document index and three clear questions gets more from every billed hour. Here is the one-page brief I teach, built with AI and checked line by line. General education, not legal advice.</p>
+        <div class="img" data-asset="LinkedIn post image"><span class="tag">With a lawyer</span><h5>How to brief a lawyer in <span class="r">one page.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
         <div class="act"><span>Like</span><span>Comment</span><span>Repost</span><span>Send</span></div>
       </div>
     </div>
     <div class="s3">
-      <div class="cardlabel"><span class="label">Starter Pack / A4 cover</span></div>
-      <div class="reel" style="aspect-ratio:1/1.414;border-radius:6px">
-        <div style="padding:9cqw;display:flex;flex-direction:column;justify-content:space-between;flex:1;gap:6cqw">
-          <span style="font:600 6cqw var(--serif)">Legal AI <span class="br">[</span>E<span class="br">]</span></span>
-          <h5 style="margin:0;font:600 13cqw/.98 var(--serif);letter-spacing:-.025em">Legal Preparation Starter Pack</h5>
-          <div style="display:flex;flex-direction:column;gap:3cqw;font:4.2cqw var(--mono)">
-            <div style="display:flex;justify-content:space-between;border-bottom:1px solid #DADAD5;padding-bottom:2cqw"><span>Chronology</span><span style="color:#5F636B">[SOURCE]</span></div>
-            <div style="display:flex;justify-content:space-between;border-bottom:1px solid #DADAD5;padding-bottom:2cqw"><span>Questions</span><span style="color:#5F636B">[UNKNOWN]</span></div>
-            <div style="display:flex;justify-content:space-between;border-bottom:1px solid #DADAD5;padding-bottom:2cqw"><span>Court rules</span><span style="color:#5F636B">[CHECKED]</span></div>
-          </div>
-        </div>
+      <div class="cardlabel"><span class="label">Starter Pack / cover</span></div>
+      <div class="pack" data-asset="Starter Pack cover">
+        <span class="top">Legal AI with Andrew <span class="r">[</span>E<span class="r">]</span></span>
+        <div><div class="main"><h5>Legal AI Starter Pack</h5></div><p class="three">Understand.<br>Prepare.<br><span class="r">Participate.</span></p></div>
+        <span class="foot">Practical AI for Australian legal matters.</span>
+      </div>
+    </div>
+    <!-- MORE TEMPLATES -->
+    <div class="s12">
+      <div class="cardlabel"><span class="label">More templates / story, carousel, newsletter</span></div>
+      <div class="more">
+        <div class="story" data-asset="Story: Dates"><span class="tag">Dates</span><div><h5>Waiting is not doing nothing. Keep the file <span class="r">current.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div><span class="sig">Legal AI with Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
+        <div class="slide" data-asset="Carousel slide: Preparation"><span class="tag">Preparation / 2 of 5</span><h5>Three steps to a working <span class="r">file.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true" style="--w:44%;--mt:0;margin:-3cqw 0 6cqw"><use href="#stroke" stroke="#006E30"/></svg><ol><li><span>[1]</span>Collect every document.</li><li><span>[2]</span>Name each one by date.</li><li><span>[3]</span>Index it in one table.</li></ol></div>
+        <div class="news" data-asset="Newsletter header"><div><span class="tag">Fortnightly</span><h5>Legal AI Field <span class="r">Notes</span></h5></div><span class="sig">Legal AI with Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
       </div>
     </div>
   </div>
 
+  <!-- RATIO -->
+  <section class="ratio" id="ratio">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span class="label">Colour ratio / measured</span>
+      <div class="bar" id="ratio-bar" aria-label="Measured colour split across the designs on this board">
+        <i style="flex:86.55;background:#FFFFFF"></i><i style="flex:9.52;background:#121417"></i><i style="flex:1.92;background:#D4231B"></i><i style="flex:1.48;background:#006E30"></i><i style="flex:0.53;background:#FFD600"></i>
+      </div>
+      <table id="ratio-table">
+        <thead><tr><th>Colour</th><th>Target</th><th>Measured</th></tr></thead>
+        <tbody>
+          <tr><td><i style="background:#FFFFFF"></i>Paper #FFFFFF</td><td>86%</td><td data-k="paper">86.55%</td></tr>
+          <tr><td><i style="background:#121417"></i>Ink #121417</td><td>10%</td><td data-k="ink">9.52%</td></tr>
+          <tr><td><i style="background:#D4231B"></i>Red #D4231B</td><td>2%</td><td data-k="red">1.92%</td></tr>
+          <tr><td><i style="background:#006E30"></i>Green #006E30</td><td>1.5%</td><td data-k="green">1.48%</td></tr>
+          <tr><td><i style="background:#FFD600"></i>Yellow #FFD600</td><td>0.5%</td><td data-k="yellow">0.53%</td></tr>
+        </tbody>
+      </table>
+      <p id="ratio-method" style="margin:0;font:12px/1.5 var(--mono);color:var(--grey)">Measured on the 26 designs on this board, each counted equally. Photo slots are excluded. Every pixel is split between the two palette colours it blends, so antialiased edges count fairly. Rendered in a headless browser at 1360 px wide, 20 November 2026. Weighted by pixel area instead, the large banners dominate: paper 91.9%, ink 5.1%, red 1.6%, green 1.2%, yellow 0.19%. Real photographs will add their own colour and are not part of these figures.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span class="label">Colour rules</span>
+      <div class="rules">
+        <div><span>[1]</span>Paper and ink do the work. Most designs are white with ink type.</div>
+        <div><span>[2]</span>Red is only for the [E] brackets and the one key word in a headline.</div>
+        <div><span>[3]</span>Green is only for series tags, underline strokes, vertical rules and the numbers [1] [2] [3].</div>
+        <div><span>[4]</span>Yellow is only for the series tag and underline stroke on black cards. It never appears on white.</div>
+        <div><span>[5]</span>Never more than two accents in one design: red plus green on white, or red plus yellow on black.</div>
+        <div><span>[6]</span>About one black card in every thirteen designs. Real photographs only.</div>
+      </div>
+    </div>
+  </section>
+
   <footer class="foot">
-    <span>Legal AI with Andrew E / Social board v1 / 12 November 2026 / Concept, not final artwork</span>
-    <span>Profile copy from the Social Media Strategy 2026. Handles, domain and URLs are proposed and unchecked. Platform layouts are simplified.</span>
+    <span>Legal AI with Andrew E / Social board v2 / 20 November 2026 / Concept, not final artwork</span>
+    <span>Copy from the Brand Statement and Audience Research (20 November 2026). "20+ years" is founder-supplied: confirm wording before publishing. Handles and domain unchecked.</span>
   </footer>
 </div>
