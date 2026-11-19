@@ -17,7 +17,7 @@
 body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
 .wrap{max-width:1360px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:36px 56px;display:flex;flex-direction:column;gap:30px}
 .r{color:var(--red)}
-h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
+
 .g{color:var(--green)}
 .label{font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
 .photo{background:repeating-linear-gradient(135deg,#E6E6E3 0 2px,#F2F2F0 2px 12px);display:flex;align-items:flex-end;justify-content:center;font:600 9px/1.3 var(--mono);color:#6b6e73;letter-spacing:.06em;text-transform:uppercase;padding-bottom:8%}
@@ -64,7 +64,7 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
 .banner .bw .a{display:block;font-weight:700;font-size:var(--wa,9cqw);letter-spacing:-.035em}
 .banner .bw .b{display:block;font-weight:500;font-size:var(--wb,4.1cqw);margin-top:.5cqw}
 .banner .bl{border-left:.9cqw solid var(--green);padding-left:3cqw}
-.banner .bl p{margin:0;font:400 var(--bs,5.4cqw)/1.08 var(--serif);letter-spacing:-.015em}
+.banner .bl p{margin:0;font:600 var(--bs,4.8cqw)/1.08 var(--serif);letter-spacing:-.015em}
 
 /* avatar */
 .av{border-radius:50%;background:var(--paper);border:1px solid var(--frame);display:flex;align-items:center;justify-content:center;text-align:center;font:700 var(--fs,11px)/1.12 var(--serif);flex:none;container-type:inline-size}
@@ -86,7 +86,7 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
 .th{aspect-ratio:16/9;border-radius:8px;overflow:hidden;display:grid;grid-template-columns:1fr 30%;container-type:inline-size;position:relative;background:var(--paper);color:var(--ink);border:1px solid var(--line)}
 .th .tx{padding:4.5cqw 4.5cqw;display:flex;flex-direction:column;justify-content:center;min-width:0}
 .tag{font:700 3.1cqw var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:2cqw}
-.th h4{margin:0;font:400 9.6cqw/1 var(--serif);letter-spacing:-.025em}
+.th h4{margin:0;font:600 9cqw/1 var(--serif);letter-spacing:-.025em}
 .th .photo{font-size:2.4cqw}
 .th .dur{position:absolute;right:2.4cqw;bottom:2.4cqw;background:var(--ink);color:#fff;font:600 3cqw var(--sys);padding:.4cqw 1.2cqw;border-radius:4px}
 .black{background:var(--ink) !important;color:#fff !important;border-color:var(--ink) !important}
@@ -111,7 +111,7 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
 .ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#fff}
 .tile{aspect-ratio:4/5;container-type:inline-size;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:9% 8%;background:var(--paper);color:var(--ink);outline:1px solid var(--line);outline-offset:-1px}
 .tile .tag{font-size:6.2cqw;margin:0}
-.tile h5{margin:0;font:400 15cqw/1.02 var(--serif);letter-spacing:-.02em}
+.tile h5{margin:0;font:600 13.6cqw/1.02 var(--serif);letter-spacing:-.02em}
 .tile .ul{--w:68%;--mt:4cqw}
 .tile .mk{font:700 7cqw var(--serif);align-self:flex-end}
 
@@ -134,7 +134,7 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
 @media (max-width:520px){.titles{grid-template-columns:minmax(0,1fr)}}
 .tt{aspect-ratio:4/3;border:1px solid var(--line);border-radius:8px;container-type:inline-size;padding:8% 7%;display:flex;flex-direction:column;justify-content:center;background:var(--paper);color:var(--ink);overflow:hidden}
 .tt .tag{font-size:4.6cqw}
-.tt h4{margin:0;font:400 14cqw/1.02 var(--serif);letter-spacing:-.022em}
+.tt h4{margin:0;font:600 12.6cqw/1.02 var(--serif);letter-spacing:-.022em}
 .tt .ul{--w:62%;--mt:4cqw}
 
 /* reel, post, pack */
@@ -142,17 +142,17 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
 .reel .photo{flex:1;font-size:3.6cqw}
 .reel .cap{padding:8cqw 7cqw 9cqw;display:flex;flex-direction:column}
 .reel .tag{font-size:4.4cqw}
-.reel h5{margin:0;font:400 12.4cqw/1.02 var(--serif);letter-spacing:-.02em}
+.reel h5{margin:0;font:600 11.4cqw/1.02 var(--serif);letter-spacing:-.02em}
 .reel .ul{--w:62%;--mt:4cqw}
 .post{background:var(--paper);border:1px solid var(--frame);border-radius:10px;overflow:hidden;font:14px/1.45 var(--sys)}
 .post .who{display:flex;gap:10px;align-items:center;padding:14px 16px 8px}
-.post .who .av{width:48px;height:48px;--fs:5.6px;line-height:1.02}
+.post .who .av{width:58px;height:58px;--fs:6.4px;line-height:1.05}
 .post .who b{display:block;font-size:14px}
 .post .who span{font-size:12px;color:var(--ui-muted)}
 .post p{margin:0;padding:0 16px 12px;color:#222}
 .post .img{aspect-ratio:1.91/1;background:var(--paper);border-top:1px solid var(--ui-line);border-bottom:1px solid var(--ui-line);container-type:inline-size;padding:0 7%;display:flex;flex-direction:column;justify-content:center}
 .post .img .tag{font-size:2.6cqw}
-.post .img h5{margin:0;font:400 8.8cqw/1.02 var(--serif);letter-spacing:-.02em;max-width:85%}
+.post .img h5{margin:0;font:600 8cqw/1.02 var(--serif);letter-spacing:-.02em;max-width:85%}
 .post .img .ul{--w:38%;--mt:2.6cqw}
 .post .act{display:flex;justify-content:space-around;padding:10px;font:600 13px var(--sys);color:var(--ui-muted)}
 .pack{aspect-ratio:1/1.414;border:1px solid var(--line);border-radius:6px;background:var(--paper);container-type:inline-size;padding:9% 8%;display:flex;flex-direction:column;justify-content:space-between}
@@ -167,22 +167,21 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
 @media (max-width:980px){.more{grid-template-columns:minmax(0,1fr)}}
 .story{aspect-ratio:9/16;border:1px solid var(--line);border-radius:12px;container-type:inline-size;padding:12% 9%;display:flex;flex-direction:column;justify-content:space-between;background:var(--paper)}
 .story .tag{font-size:5cqw}
-.story h5{margin:0;font:400 16cqw/1.04 var(--serif);letter-spacing:-.02em}
+.story h5{margin:0;font:600 14cqw/1.04 var(--serif);letter-spacing:-.02em}
 .story .ul{--w:66%;--mt:5cqw}
 .story .sig,.news .sig{font:700 5.4cqw var(--serif)}
 .slide{aspect-ratio:4/5;border:1px solid var(--line);border-radius:8px;container-type:inline-size;padding:10% 9%;display:flex;flex-direction:column;justify-content:center;background:var(--paper)}
 .slide .tag{font-size:4cqw}
-.slide h5{margin:0 0 6cqw;font:400 12.4cqw/1.04 var(--serif);letter-spacing:-.02em}
+.slide h5{margin:0 0 6cqw;font:600 11cqw/1.04 var(--serif);letter-spacing:-.02em}
 .slide ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3.4cqw;font:500 5.6cqw/1.2 var(--serif)}
 .slide li{display:grid;grid-template-columns:12cqw 1fr}
 .slide li span{font:600 5cqw var(--mono);color:var(--green)}
 .news{aspect-ratio:3/1;border:1px solid var(--line);border-radius:8px;container-type:inline-size;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:var(--paper);border-left:1px solid var(--line)}
 .news > div{border-left:1.3cqw solid var(--green);padding-left:3cqw}
 .news .tag{font-size:1.9cqw}
-.news h5{margin:0;font:400 7.6cqw/1 var(--serif);letter-spacing:-.025em}
+.news h5{margin:0;font:600 6.2cqw/1 var(--serif);letter-spacing:-.025em}
 .news .sig{font-size:2.4cqw}
 
-.news h5 .r{font-size:1em}
 
 /* ratio panel */
 .ratio{border-top:1px solid var(--line);padding-top:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:32px}
@@ -245,7 +244,7 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
         <div class="bar"><div class="dots"><i></i><i></i><i></i></div><span class="url">youtube.com/@legalaiwithandrewe</span></div>
         <div class="banner" data-asset="YouTube banner" style="aspect-ratio:16/4.4">
           <div class="bw"><span class="a">Legal AI</span><span class="b">with Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
-          <div class="bl"><p>Stop paying a lawyer to sort out your <span class="r">paperwork.</span></p><svg class="ul" viewBox="0 0 200 16" aria-hidden="true" style="--w:44%;--mt:1.6cqw"><use href="#stroke" stroke="#006E30"/></svg></div>
+          <div class="bl"><p>Stop paying a lawyer to sort out your paperwork.</p><svg class="ul" viewBox="0 0 200 16" aria-hidden="true" style="--w:44%;--mt:1.6cqw"><use href="#stroke" stroke="#006E30"/></svg></div>
         </div>
         <div class="yt-body">
           <div class="av" data-asset="Avatar" style="width:12cqw;height:12cqw;--fs:1.75cqw"><span>Legal AI<br>with<br>Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
@@ -259,15 +258,15 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
         <div class="tabs"><span class="on">Home</span><span>Videos</span><span>Shorts</span><span>Playlists</span><span>Community</span></div>
         <div class="yt-grid">
           <div class="t">
-            <div class="th" data-asset="Thumbnail: Preparation"><div class="tx"><span class="tag">Preparation</span><h4>Your 4,000 emails are not a <span class="r">chronology.</span></h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div><div class="photo" data-photo>Photo</div><span class="dur">9:12</span></div>
+            <div class="th" data-asset="Thumbnail: Preparation"><div class="tx"><span class="tag">Preparation</span><h4>Your 4,000 emails are not a chronology.</h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div><div class="photo" data-photo>Photo</div><span class="dur">9:12</span></div>
             <b>Turn years of emails and messages into a sourced chronology</b><span>Legal AI with Andrew E</span>
           </div>
           <div class="t">
-            <div class="th black" data-asset="Thumbnail: AI rules"><div class="tx"><span class="tag">AI rules</span><h4>ChatGPT will agree. That's the <span class="r">problem.</span></h4><svg class="ul" viewBox="0 0 200 30" aria-hidden="true"><use href="#strokeY" stroke="#FFD600"/></svg></div><div class="photo" data-photo style="background:#121417;color:#9a9da3">Photo</div><span class="dur">10:48</span></div>
+            <div class="th black" data-asset="Thumbnail: AI rules"><div class="tx"><span class="tag">AI rules</span><h4>ChatGPT will agree. That's the problem.</h4><svg class="ul" viewBox="0 0 200 30" aria-hidden="true"><use href="#strokeY" stroke="#FFD600"/></svg></div><div class="photo" data-photo style="background:#121417;color:#9a9da3">Photo</div><span class="dur">10:48</span></div>
             <b>Why AI agrees with you, and what to check before you rely on it</b><span>Legal AI with Andrew E</span>
           </div>
           <div class="t">
-            <div class="th" data-asset="Thumbnail: With a lawyer"><div class="tx"><span class="tag">With a lawyer</span><h4>Brief a lawyer in <span class="r">one page.</span></h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div><div class="photo" data-photo>Photo</div><span class="dur">7:36</span></div>
+            <div class="th" data-asset="Thumbnail: With a lawyer"><div class="tx"><span class="tag">With a lawyer</span><h4>Brief a lawyer in one page.</h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div><div class="photo" data-photo>Photo</div><span class="dur">7:36</span></div>
             <b>How to brief a lawyer in one page, so paid time goes on advice</b><span>Legal AI with Andrew E</span>
           </div>
         </div>
@@ -295,15 +294,15 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
           <div><i>AI</i>AI rules</div>
         </div>
         <div class="ig-grid">
-          <div class="tile" data-asset="IG: Pay for advice"><span class="tag">Preparation</span><div><h5>Pay for advice, not <span class="r">admin.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
-          <div class="tile black" data-asset="IG: Public chatbot"><span class="tag">AI rules</span><div><h5>Don't paste your file into a public <span class="r">chatbot.</span></h5><svg class="ul" viewBox="0 0 200 30" aria-hidden="true"><use href="#strokeY" stroke="#FFD600"/></svg></div></div>
+          <div class="tile" data-asset="IG: Pay for advice"><span class="tag">Preparation</span><div><h5>Pay for advice, not admin.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
+          <div class="tile black" data-asset="IG: Public chatbot"><span class="tag">AI rules</span><div><h5>Don't paste your file into a public chatbot.</h5><svg class="ul" viewBox="0 0 200 30" aria-hidden="true"><use href="#strokeY" stroke="#FFD600"/></svg></div></div>
           <div class="tile photo" data-photo style="padding:0;justify-content:flex-end">Reel<br>real photo</div>
-          <div class="tile" data-asset="IG: Own words"><span class="tag">Affidavits</span><div><h5>Your evidence, in your own <span class="r">words.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
-          <div class="tile" data-asset="IG: Stop mixing"><span class="tag">Affidavits</span><div><h5>Facts, allegations, inferences. Stop <span class="r">mixing</span> them.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
-          <div class="tile" data-asset="IG: Track every date"><span class="tag">Dates</span><div><h5>Track every date. Then <span class="r">check</span> it yourself.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
-          <div class="tile" data-asset="IG: Duty lawyer"><span class="tag">With a lawyer</span><div><h5>Don't spend the 20 minutes finding the <span class="r">PDF.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
+          <div class="tile" data-asset="IG: Own words"><span class="tag">Affidavits</span><div><h5>Your evidence, in your own words.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
+          <div class="tile" data-asset="IG: Stop mixing"><span class="tag">Affidavits</span><div><h5>Facts, allegations, inferences. Stop mixing them.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
+          <div class="tile" data-asset="IG: Track every date"><span class="tag">Dates</span><div><h5>Track every date. Then check it yourself.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
+          <div class="tile" data-asset="IG: Duty lawyer"><span class="tag">With a lawyer</span><div><h5>Don't spend the 20 minutes finding the PDF.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
           <div class="tile photo" data-photo style="padding:0;justify-content:flex-end">Workshop<br>real photo</div>
-          <div class="tile" data-asset="IG: All the hats"><span class="tag">Preparation</span><div><h5>You're wearing all the <span class="r">hats.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
+          <div class="tile" data-asset="IG: All the hats"><span class="tag">Preparation</span><div><h5>You're wearing all the hats.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div></div>
         </div>
       </div></div>
     </div>
@@ -316,7 +315,7 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
         <div class="pg-head">
           <div class="banner" data-asset="LinkedIn banner" style="aspect-ratio:4/1;--wa:7.4cqw;--wb:3.4cqw;--bs:4.8cqw">
             <div class="bw"><span class="a">Legal AI</span><span class="b">with Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
-            <div class="bl"><p>Get more from AI. Get more from your <span class="r">lawyer.</span></p></div>
+            <div class="bl"><p>Get more from AI. Get more from your lawyer.</p></div>
           </div>
           <div class="li-logo" data-asset="LinkedIn logo"><span><span class="r">[</span>E<span class="r">]</span></span></div>
         </div>
@@ -336,7 +335,7 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
         <div class="bar"><div class="dots"><i></i><i></i><i></i></div><span class="url">facebook.com/legalaiwithandrewe</span></div>
         <div class="pg-head">
           <div class="banner" data-asset="Facebook banner" style="aspect-ratio:2.7/1;grid-template-columns:1fr;padding-left:30%;--bs:7.6cqw">
-            <div class="bl"><p>Pay for advice, not <span class="r">admin.</span></p><p style="font:500 2.6cqw/1.3 var(--serif);margin-top:1.6cqw;color:#121417">Organise your matter. Brief your lawyer. Use AI with care.</p></div>
+            <div class="bl"><p>Pay for advice, not admin.</p><p style="font:500 2.6cqw/1.3 var(--serif);margin-top:1.6cqw;color:#121417">Organise your matter. Brief your lawyer. Use AI with care.</p></div>
           </div>
           <div class="fb-av"><div class="av" style="width:100%;height:100%;--fs:1.9cqw"><span>Legal AI<br>with<br>Andrew <span class="r">[</span>E<span class="r">]</span></span></div></div>
         </div>
@@ -353,11 +352,11 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
     <div class="s12">
       <div class="cardlabel"><span class="label">Content titles / five series</span><span class="note">Green series tag and underline on white.</span></div>
       <div class="titles">
-        <div class="tt" data-asset="Title: Preparation"><span class="tag">Preparation</span><h4>From chaos to a working <span class="r">file.</span></h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
-        <div class="tt" data-asset="Title: Affidavits"><span class="tag">Affidavits</span><h4>What the Court wants in an <span class="r">affidavit.</span></h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
-        <div class="tt" data-asset="Title: Dates"><span class="tag">Dates</span><h4>Track every date. Then <span class="r">check</span> it.</h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
-        <div class="tt" data-asset="Title: With a lawyer"><span class="tag">With a lawyer</span><h4>Make the paid hour <span class="r">count.</span></h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
-        <div class="tt" data-asset="Title: AI rules"><span class="tag">AI rules</span><h4>Family-law AI rules in plain <span class="r">English.</span></h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
+        <div class="tt" data-asset="Title: Preparation"><span class="tag">Preparation</span><h4>From chaos to a working file.</h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
+        <div class="tt" data-asset="Title: Affidavits"><span class="tag">Affidavits</span><h4>What the Court wants in an affidavit.</h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
+        <div class="tt" data-asset="Title: Dates"><span class="tag">Dates</span><h4>Track every date. Then check it.</h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
+        <div class="tt" data-asset="Title: With a lawyer"><span class="tag">With a lawyer</span><h4>Make the paid hour count.</h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
+        <div class="tt" data-asset="Title: AI rules"><span class="tag">AI rules</span><h4>Family-law AI rules in plain English.</h4><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
       </div>
     </div>
 
@@ -366,15 +365,15 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
       <div class="cardlabel"><span class="label">Reel cover / 9:16</span></div>
       <div class="reel" data-asset="Reel cover">
         <div class="photo" data-photo>Andrew to camera<br>real footage</div>
-        <div class="cap"><span class="tag">Preparation</span><h5>Stop paying a lawyer to sort out your <span class="r">paperwork.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
+        <div class="cap"><span class="tag">Preparation</span><h5>Stop paying a lawyer to sort out your paperwork.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
       </div>
     </div>
     <div class="s6">
       <div class="cardlabel"><span class="label">LinkedIn / founder post</span></div>
       <div class="post">
-        <div class="who"><div class="av"><span>Legal AI<br>with<br>Andrew <span class="r">[</span>E<span class="r">]</span></span></div><div><b>Andrew E</b><span>Founder, Legal AI with Andrew E · 1d</span></div></div>
+        <div class="who"><div class="av"><span>Legal AI<br>with Andrew<br><span class="r">[</span>E<span class="r">]</span></span></div><div><b>Andrew E</b><span>Founder, Legal AI with Andrew E · 1d</span></div></div>
         <p>A client who arrives with a sourced chronology, a document index and three clear questions gets more from every billed hour. Here is the one-page brief I teach, built with AI and checked line by line. General education, not legal advice.</p>
-        <div class="img" data-asset="LinkedIn post image"><span class="tag">With a lawyer</span><h5>How to brief a lawyer in <span class="r">one page.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
+        <div class="img" data-asset="LinkedIn post image"><span class="tag">With a lawyer</span><h5>How to brief a lawyer in one page.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div>
         <div class="act"><span>Like</span><span>Comment</span><span>Repost</span><span>Send</span></div>
       </div>
     </div>
@@ -382,7 +381,7 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
       <div class="cardlabel"><span class="label">Starter Pack / cover</span></div>
       <div class="pack" data-asset="Starter Pack cover">
         <span class="top">Legal AI with Andrew <span class="r">[</span>E<span class="r">]</span></span>
-        <div><div class="main"><h5>Legal AI Starter Pack</h5></div><p class="three">Understand.<br>Prepare.<br><span class="r">Participate.</span></p></div>
+        <div><div class="main"><h5>Legal AI Starter Pack</h5></div><p class="three">Understand.<br>Prepare.<br>Participate.</p></div>
         <span class="foot">Practical AI for Australian legal matters.</span>
       </div>
     </div>
@@ -390,9 +389,9 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
     <div class="s12">
       <div class="cardlabel"><span class="label">More templates / story, carousel, newsletter</span></div>
       <div class="more">
-        <div class="story" data-asset="Story: Dates"><span class="tag">Dates</span><div><h5>Waiting is not doing nothing. Keep the file <span class="r">current.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div><span class="sig">Legal AI with Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
-        <div class="slide" data-asset="Carousel slide: Preparation"><span class="tag">Preparation / 2 of 5</span><h5>Three steps to a working <span class="r">file.</span></h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true" style="--w:44%;--mt:0;margin:-3cqw 0 6cqw"><use href="#stroke" stroke="#006E30"/></svg><ol><li><span>[1]</span>Collect every document.</li><li><span>[2]</span>Name each one by date.</li><li><span>[3]</span>Index it in one table.</li></ol></div>
-        <div class="news" data-asset="Newsletter header"><div><span class="tag">Fortnightly</span><h5>Legal AI Field <span class="r">Notes</span></h5></div><span class="sig">Legal AI with Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
+        <div class="story" data-asset="Story: Dates"><span class="tag">Dates</span><div><h5>Waiting is not doing nothing. Keep the file current.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div><span class="sig">Legal AI with Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
+        <div class="slide" data-asset="Carousel slide: Preparation"><span class="tag">Preparation / 2 of 5</span><h5>Three steps to a working file.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true" style="--w:44%;--mt:0;margin:-3cqw 0 6cqw"><use href="#stroke" stroke="#006E30"/></svg><ol><li><span>[1]</span>Collect every document.</li><li><span>[2]</span>Name each one by date.</li><li><span>[3]</span>Index it in one table.</li></ol></div>
+        <div class="news" data-asset="Newsletter header"><div><span class="tag">Fortnightly</span><h5>Legal AI Field Notes</h5></div><span class="sig">Legal AI with Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
       </div>
     </div>
   </div>
@@ -401,36 +400,34 @@ h4 .r,h5 .r,.bl p .r,.three .r{font-weight:700;font-size:1.24em}
   <section class="ratio" id="ratio">
     <div style="display:flex;flex-direction:column;gap:14px">
       <span class="label">Colour ratio / measured</span>
-      <div class="bar" id="ratio-bar" aria-label="Measured colour split across the designs on this board">
-        <i style="flex:86.55;background:#FFFFFF"></i><i style="flex:9.52;background:#121417"></i><i style="flex:1.92;background:#D4231B"></i><i style="flex:1.48;background:#006E30"></i><i style="flex:0.53;background:#FFD600"></i>
-      </div>
+      <div class="bar" id="ratio-bar" aria-label="Measured colour split across the designs on this board"><i style="flex:87.09;background:#FFFFFF"></i><i style="flex:10.74;background:#121417"></i><i style="flex:0.15;background:#D4231B"></i><i style="flex:1.49;background:#006E30"></i><i style="flex:0.54;background:#FFD600"></i></div>
       <table id="ratio-table">
         <thead><tr><th>Colour</th><th>Target</th><th>Measured</th></tr></thead>
         <tbody>
-          <tr><td><i style="background:#FFFFFF"></i>Paper #FFFFFF</td><td>86%</td><td data-k="paper">86.55%</td></tr>
-          <tr><td><i style="background:#121417"></i>Ink #121417</td><td>10%</td><td data-k="ink">9.52%</td></tr>
-          <tr><td><i style="background:#D4231B"></i>Red #D4231B</td><td>2%</td><td data-k="red">1.92%</td></tr>
-          <tr><td><i style="background:#006E30"></i>Green #006E30</td><td>1.5%</td><td data-k="green">1.48%</td></tr>
-          <tr><td><i style="background:#FFD600"></i>Yellow #FFD600</td><td>0.5%</td><td data-k="yellow">0.53%</td></tr>
+          <tr><td><i style="background:#FFFFFF"></i>Paper #FFFFFF</td><td>86%</td><td data-k="paper">87.09%</td></tr>
+          <tr><td><i style="background:#121417"></i>Ink #121417</td><td>10%</td><td data-k="ink">10.74%</td></tr>
+          <tr><td><i style="background:#D4231B"></i>Red #D4231B</td><td>[E] only</td><td data-k="red">0.15%</td></tr>
+          <tr><td><i style="background:#006E30"></i>Green #006E30</td><td>1.5%</td><td data-k="green">1.49%</td></tr>
+          <tr><td><i style="background:#FFD600"></i>Yellow #FFD600</td><td>0.5%</td><td data-k="yellow">0.54%</td></tr>
         </tbody>
       </table>
-      <p id="ratio-method" style="margin:0;font:12px/1.5 var(--mono);color:var(--grey)">Measured on the 26 designs on this board, each counted equally. Photo slots are excluded. Every pixel is split between the two palette colours it blends, so antialiased edges count fairly. Rendered in a headless browser at 1360 px wide, 20 November 2026. Weighted by pixel area instead, the large banners dominate: paper 91.9%, ink 5.1%, red 1.6%, green 1.2%, yellow 0.19%. Real photographs will add their own colour and are not part of these figures.</p>
+      <p id="ratio-method" style="margin:0;font:12px/1.5 var(--mono);color:var(--grey)">Measured on the 26 designs on this board, each counted equally. Photo slots are excluded. Every pixel is split between the two palette colours it blends, so antialiased edges count fairly. Rendered in a headless browser at 1360 px wide, 20 November 2026. Red now marks only the [E] brackets, so its share is a trace by design. Weighted by pixel area instead, the large banners dominate: paper 92.5%, ink 6.1%, green 1.2%, yellow 0.19%, red 0.03%. Real photographs will add their own colour and are not part of these figures.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px">
       <span class="label">Colour rules</span>
       <div class="rules">
         <div><span>[1]</span>Paper and ink do the work. Most designs are white with ink type.</div>
-        <div><span>[2]</span>Red is only for the [E] brackets and the one key word in a headline.</div>
+        <div><span>[2]</span>Red is only for the [E] brackets. Headlines stay in ink.</div>
         <div><span>[3]</span>Green is only for series tags, underline strokes, vertical rules and the numbers [1] [2] [3].</div>
         <div><span>[4]</span>Yellow is only for the series tag and underline stroke on black cards. It never appears on white.</div>
-        <div><span>[5]</span>Never more than two accents in one design: red plus green on white, or red plus yellow on black.</div>
+        <div><span>[5]</span>One accent per design: green on white, yellow on black. Red appears only where the [E] mark does.</div>
         <div><span>[6]</span>About one black card in every thirteen designs. Real photographs only.</div>
       </div>
     </div>
   </section>
 
   <footer class="foot">
-    <span>Legal AI with Andrew E / Social board v2 / 20 November 2026 / Concept, not final artwork</span>
+    <span>Legal AI with Andrew E / Social board v3 / 20 November 2026 / Concept, not final artwork</span>
     <span>Copy from the Brand Statement and Audience Research (20 November 2026). "20+ years" is founder-supplied: confirm wording before publishing. Handles and domain unchecked.</span>
   </footer>
 </div>
