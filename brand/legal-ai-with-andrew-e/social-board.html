@@ -65,6 +65,7 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
 .banner .bw .a{display:block;font-weight:700;font-size:var(--wa,9cqw);letter-spacing:-.035em}
 .banner .bw .b{display:block;font-weight:500;font-size:var(--wb,4.1cqw);margin-top:.5cqw}
 .banner .bl{border-left:.9cqw solid var(--green);padding-left:3cqw}
+.banner .bl.ink{border-left:.35cqw solid var(--ink)}
 .banner .bl p{margin:0;font:600 var(--bs,4.8cqw)/1.08 var(--serif);letter-spacing:-.015em}
 
 /* avatar */
@@ -160,7 +161,7 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
 .post .act{display:flex;justify-content:space-around;padding:10px;font:600 13px var(--sys);color:var(--ui-muted)}
 .pack{aspect-ratio:1/1.414;border:1px solid var(--line);border-radius:6px;background:var(--paper);container-type:inline-size;padding:9% 8%;display:flex;flex-direction:column;justify-content:space-between}
 .pack .top{font:700 6cqw var(--sans);letter-spacing:-.01em}
-.pack .main{border-left:2.2cqw solid var(--green);padding-left:5cqw}
+.pack .main{border-left:.8cqw solid var(--ink);padding-left:5cqw}
 .pack h5{margin:0;font:700 15cqw/.95 var(--serif);letter-spacing:-.03em}
 .pack .three{font:500 8cqw/1.25 var(--serif);margin-top:5cqw}
 .pack .foot{font:600 3.4cqw var(--mono);letter-spacing:.12em;text-transform:uppercase}
@@ -247,7 +248,7 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
         <div class="bar"><div class="dots"><i></i><i></i><i></i></div><span class="url">youtube.com/@legalaiwithandrewe</span></div>
         <div class="banner" data-asset="YouTube banner" style="aspect-ratio:16/4.4">
           <div class="bw"><span class="a">Legal AI</span><span class="b">with Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
-          <div class="bl"><p>Stop paying a lawyer to sort out your paperwork.</p><svg class="ul" viewBox="0 0 200 16" aria-hidden="true" style="--w:44%;--mt:1.6cqw"><use href="#stroke" stroke="#006E30"/></svg></div>
+          <div class="bl ink"><p>Stop paying a lawyer to sort out your paperwork.</p></div>
         </div>
         <div class="yt-body">
           <div class="av" data-asset="Avatar" style="width:12cqw;height:12cqw;--fs:1.75cqw"><span>Legal AI<br>with<br>Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
@@ -318,7 +319,7 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
         <div class="pg-head">
           <div class="banner" data-asset="LinkedIn banner" style="aspect-ratio:4/1;--wa:7.4cqw;--wb:3.4cqw;--bs:4.8cqw">
             <div class="bw"><span class="a">Legal AI</span><span class="b">with Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
-            <div class="bl"><p>Get more from AI. Get more from your lawyer.</p></div>
+            <div class="bl ink"><p>Get more from AI. Get more from your lawyer.</p></div>
           </div>
           <div class="li-logo" data-asset="LinkedIn logo"><span><span class="r">[</span>E<span class="r">]</span></span></div>
         </div>
@@ -392,9 +393,9 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
     <div class="s12">
       <div class="cardlabel"><span class="label">More templates / story, carousel, newsletter</span></div>
       <div class="more">
-        <div class="story" data-asset="Story: Dates"><span class="tag">Dates</span><div><h5>Waiting is not doing nothing. Keep the file current.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div><span class="sig">Legal AI with Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
+        <div class="story" data-asset="Story: Dates"><span class="tag">Dates</span><div><h5>Waiting is not doing nothing. Keep the file current.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true"><use href="#stroke" stroke="#006E30"/></svg></div><span class="sig">Legal AI with Andrew [E]</span></div>
         <div class="slide" data-asset="Carousel slide: Preparation"><span class="tag">Preparation / 2 of 5</span><h5>Three steps to a working file.</h5><svg class="ul" viewBox="0 0 200 16" aria-hidden="true" style="--w:44%;--mt:0;margin:-3cqw 0 6cqw"><use href="#stroke" stroke="#006E30"/></svg><ol><li><span>[1]</span>Collect every document.</li><li><span>[2]</span>Name each one by date.</li><li><span>[3]</span>Index it in one table.</li></ol></div>
-        <div class="news" data-asset="Newsletter header"><div><span class="tag">Fortnightly</span><h5>Legal AI Field Notes</h5></div><span class="sig">Legal AI with Andrew <span class="r">[</span>E<span class="r">]</span></span></div>
+        <div class="news" data-asset="Newsletter header"><div><span class="tag">Fortnightly</span><h5>Legal AI Field Notes</h5></div><span class="sig">Legal AI with Andrew [E]</span></div>
       </div>
     </div>
   </div>
@@ -403,18 +404,18 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
   <section class="ratio" id="ratio">
     <div style="display:flex;flex-direction:column;gap:14px">
       <span class="label">Colour ratio / measured</span>
-      <div class="bar" id="ratio-bar" aria-label="Measured colour split across the designs on this board"><i style="flex:86.83;background:#FFFFFF"></i><i style="flex:11.48;background:#121417"></i><i style="flex:0.16;background:#D4231B"></i><i style="flex:1.49;background:#006E30"></i><i style="flex:0.05;background:#FFD600"></i></div>
+      <div class="bar" id="ratio-bar" aria-label="Measured colour split across the designs on this board"><i style="flex:86.88;background:#FFFFFF"></i><i style="flex:11.49;background:#121417"></i><i style="flex:0.15;background:#D4231B"></i><i style="flex:1.43;background:#006E30"></i><i style="flex:0.05;background:#FFD600"></i></div>
       <table id="ratio-table">
         <thead><tr><th>Colour</th><th>Target</th><th>Measured</th></tr></thead>
         <tbody>
-          <tr><td><i style="background:#FFFFFF"></i>Paper #FFFFFF</td><td>86%</td><td data-k="paper">86.83%</td></tr>
-          <tr><td><i style="background:#121417"></i>Ink #121417</td><td>10%</td><td data-k="ink">11.48%</td></tr>
-          <tr><td><i style="background:#D4231B"></i>Red #D4231B</td><td>[E] only</td><td data-k="red">0.16%</td></tr>
-          <tr><td><i style="background:#006E30"></i>Green #006E30</td><td>1.5%</td><td data-k="green">1.49%</td></tr>
+          <tr><td><i style="background:#FFFFFF"></i>Paper #FFFFFF</td><td>86%</td><td data-k="paper">86.88%</td></tr>
+          <tr><td><i style="background:#121417"></i>Ink #121417</td><td>10%</td><td data-k="ink">11.49%</td></tr>
+          <tr><td><i style="background:#D4231B"></i>Red #D4231B</td><td>[E] only</td><td data-k="red">0.15%</td></tr>
+          <tr><td><i style="background:#006E30"></i>Green #006E30</td><td>1.5%</td><td data-k="green">1.43%</td></tr>
           <tr><td><i style="background:#FFD600"></i>Yellow #FFD600</td><td>Trace</td><td data-k="yellow">0.05%</td></tr>
         </tbody>
       </table>
-      <p id="ratio-method" style="margin:0;font:12px/1.5 var(--mono);color:var(--grey)">Measured on the 26 designs on this board, each counted equally. Photo slots are excluded. Every pixel is split between the two palette colours it blends, so antialiased edges count fairly. Rendered in a headless browser at 1360 px wide, 20 November 2026. Red marks only the [E] brackets, and the thinner yellow lines on black cards make yellow a trace too. Weighted by pixel area instead, the large banners dominate: paper 92.4%, ink 6.4%, green 1.2%, yellow 0.02%, red 0.04%. Real photographs will add their own colour and are not part of these figures.</p>
+      <p id="ratio-method" style="margin:0;font:12px/1.5 var(--mono);color:var(--grey)">Measured on the 26 designs on this board, each counted equally. Photo slots are excluded. Every pixel is split between the two palette colours it blends, so antialiased edges count fairly. Rendered in a headless browser at 1360 px wide, 20 November 2026. Red marks only the [E] brackets, and the thinner yellow lines on black cards make yellow a trace too. Weighted by pixel area instead, the large banners dominate: paper 92.5%, ink 6.4%, green 1.0%, yellow 0.02%, red 0.03%. Real photographs will add their own colour and are not part of these figures.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px">
       <span class="label">Colour rules</span>
@@ -423,14 +424,14 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
         <div><span>[2]</span>Red is only for the [E] brackets. Headlines stay in ink.</div>
         <div><span>[3]</span>Green is only for series tags, underline strokes, vertical rules and the numbers [1] [2] [3].</div>
         <div><span>[4]</span>Yellow is only for the series tag and underline stroke on black cards. It never appears on white.</div>
-        <div><span>[5]</span>One accent per design: green on white, yellow on black. Red appears only where the [E] mark does.</div>
+        <div><span>[5]</span>One accent colour per design. Where red, green or yellow is used, the other two are not. A design with the red [E] mark has no green or yellow; a design with a green tag has an ink [E].</div>
         <div><span>[6]</span>About one black card in every thirteen designs. Real photographs only.</div>
       </div>
     </div>
   </section>
 
   <footer class="foot">
-    <span>Legal AI with Andrew E / Social board v4 / 20 November 2026 / Concept, not final artwork</span>
+    <span>Legal AI with Andrew E / Social board v5 / 20 November 2026 / Concept, not final artwork</span>
     <span>Copy from the Brand Statement and Audience Research (20 November 2026). "20+ years" is founder-supplied: confirm wording before publishing. Handles and domain unchecked.</span>
   </footer>
 </div>
