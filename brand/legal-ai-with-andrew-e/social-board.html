@@ -2,7 +2,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:opsz,wght@14..32,400..800&family=Schibsted+Grotesk:wght@400;500;700&display=swap">
 <style>
 /* Layout: a single-theme presentation board (artwork). Paper ground, ink type, red for [E] and one key word, green for series tags, rules, numbers and underlines, yellow only on black cards. */
 :root{
@@ -11,7 +11,8 @@
   --grey:#5F636B; --line:#E3E3E0; --frame:#D9D9D6;
   --ui:#0F0F0F; --ui-muted:#606060; --ui-line:#E5E5E5;
   --serif:"Newsreader",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
-  --sys:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; --grot:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --sys:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 }
 *{box-sizing:border-box}
 body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
@@ -32,7 +33,7 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
 .wm{font-family:var(--serif);line-height:.88;color:var(--ink)}
 .wm .a{display:block;font-weight:700;font-size:clamp(56px,6.6vw,96px);letter-spacing:-.035em}
 .wm .b{display:block;font-weight:500;font-size:clamp(28px,3vw,42px);margin-top:6px;letter-spacing:-.015em}
-.desc{font:italic 400 19px/1.3 var(--serif);margin-top:10px}
+.desc{font:400 17px/1.45 var(--grot);margin-top:12px;color:var(--grey)}
 .purpose{font:600 22px/1.2 var(--serif);border-left:4px solid var(--green);padding-left:16px;letter-spacing:-.01em}
 .msg{display:flex;flex-direction:column;gap:10px;font:500 18px/1.25 var(--serif)}
 .msg div{display:grid;grid-template-columns:38px 1fr;gap:6px}
@@ -67,7 +68,7 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
 .banner .bl p{margin:0;font:600 var(--bs,4.8cqw)/1.08 var(--serif);letter-spacing:-.015em}
 
 /* avatar */
-.av{border-radius:50%;background:var(--paper);border:1px solid var(--frame);display:flex;align-items:center;justify-content:center;text-align:center;font:700 var(--fs,11px)/1.12 var(--serif);flex:none;container-type:inline-size}
+.av{border-radius:50%;background:var(--paper);border:1px solid var(--frame);display:flex;align-items:center;justify-content:center;text-align:center;font:700 var(--fs,11px)/1.12 var(--sans);letter-spacing:-.01em;flex:none;container-type:inline-size}
 
 /* YouTube */
 .yt-body{padding:2.4cqw 3cqw 0;display:flex;gap:2.4cqw;align-items:center;flex-wrap:wrap}
@@ -90,8 +91,10 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
 .th .photo{font-size:2.4cqw}
 .th .dur{position:absolute;right:2.4cqw;bottom:2.4cqw;background:var(--ink);color:#fff;font:600 3cqw var(--sys);padding:.4cqw 1.2cqw;border-radius:4px}
 .black{background:var(--ink) !important;color:#fff !important;border-color:var(--ink) !important}
-.black .tag{color:var(--yellow);font-size:1.5em}
-.black .ul,.black.tile .ul{--w:86%}
+.black .tag{color:var(--yellow);font-weight:600}
+.black .ul,.black.tile .ul{--w:34%}
+.th.black h4{font:400 7.4cqw/1.08 var(--serif);letter-spacing:-.01em}
+.tile.black h5{font:400 11cqw/1.08 var(--serif);letter-spacing:-.01em}
 
 /* Instagram */
 .ig-top{display:flex;justify-content:space-between;align-items:center;padding:4px 16px 10px;font:700 17px var(--sys)}
@@ -156,7 +159,7 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
 .post .img .ul{--w:38%;--mt:2.6cqw}
 .post .act{display:flex;justify-content:space-around;padding:10px;font:600 13px var(--sys);color:var(--ui-muted)}
 .pack{aspect-ratio:1/1.414;border:1px solid var(--line);border-radius:6px;background:var(--paper);container-type:inline-size;padding:9% 8%;display:flex;flex-direction:column;justify-content:space-between}
-.pack .top{font:700 6.2cqw var(--serif)}
+.pack .top{font:700 6cqw var(--sans);letter-spacing:-.01em}
 .pack .main{border-left:2.2cqw solid var(--green);padding-left:5cqw}
 .pack h5{margin:0;font:700 15cqw/.95 var(--serif);letter-spacing:-.03em}
 .pack .three{font:500 8cqw/1.25 var(--serif);margin-top:5cqw}
@@ -169,7 +172,7 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
 .story .tag{font-size:5cqw}
 .story h5{margin:0;font:600 14cqw/1.04 var(--serif);letter-spacing:-.02em}
 .story .ul{--w:66%;--mt:5cqw}
-.story .sig,.news .sig{font:700 5.4cqw var(--serif)}
+.story .sig,.news .sig{font:700 5cqw var(--sans);letter-spacing:-.01em}
 .slide{aspect-ratio:4/5;border:1px solid var(--line);border-radius:8px;container-type:inline-size;padding:10% 9%;display:flex;flex-direction:column;justify-content:center;background:var(--paper)}
 .slide .tag{font-size:4cqw}
 .slide h5{margin:0 0 6cqw;font:600 11cqw/1.04 var(--serif);letter-spacing:-.02em}
@@ -192,7 +195,7 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
 .ratio th,.ratio td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
 .ratio th{font-weight:600;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
 .ratio td i{display:inline-block;width:12px;height:12px;border:1px solid var(--frame);vertical-align:-2px;margin-right:8px}
-.rules{display:flex;flex-direction:column;gap:8px;font:14px/1.45 var(--sys)}
+.rules{display:flex;flex-direction:column;gap:8px;font:14px/1.45 var(--grot)}
 .rules span{font:600 13px var(--mono);color:var(--green);margin-right:6px}
 .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px;font:11.5px/1.5 var(--mono);color:var(--grey)}
 </style>
@@ -200,7 +203,7 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <path id="stroke" d="M4 12 C 46 7, 120 6, 196 5" fill="none" stroke-width="13" stroke-linecap="round"/>
-    <path id="strokeY" d="M10 20 C 50 15, 120 13, 190 11" fill="none" stroke-width="24" stroke-linecap="round"/>
+    <path id="strokeY" d="M6 18 C 50 14, 120 12, 194 10" fill="none" stroke-width="9" stroke-linecap="round"/>
   </defs>
 </svg>
 
@@ -335,7 +338,7 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
         <div class="bar"><div class="dots"><i></i><i></i><i></i></div><span class="url">facebook.com/legalaiwithandrewe</span></div>
         <div class="pg-head">
           <div class="banner" data-asset="Facebook banner" style="aspect-ratio:2.7/1;grid-template-columns:1fr;padding-left:30%;--bs:7.6cqw">
-            <div class="bl"><p>Pay for advice, not admin.</p><p style="font:500 2.6cqw/1.3 var(--serif);margin-top:1.6cqw;color:#121417">Organise your matter. Brief your lawyer. Use AI with care.</p></div>
+            <div class="bl"><p>Pay for advice, not admin.</p><p style="font:400 2.2cqw/1.5 var(--mono);margin-top:1.8cqw;color:#5F636B">Organise your matter. Brief your lawyer. Use AI with care.</p></div>
           </div>
           <div class="fb-av"><div class="av" style="width:100%;height:100%;--fs:1.9cqw"><span>Legal AI<br>with<br>Andrew <span class="r">[</span>E<span class="r">]</span></span></div></div>
         </div>
@@ -400,18 +403,18 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
   <section class="ratio" id="ratio">
     <div style="display:flex;flex-direction:column;gap:14px">
       <span class="label">Colour ratio / measured</span>
-      <div class="bar" id="ratio-bar" aria-label="Measured colour split across the designs on this board"><i style="flex:87.09;background:#FFFFFF"></i><i style="flex:10.74;background:#121417"></i><i style="flex:0.15;background:#D4231B"></i><i style="flex:1.49;background:#006E30"></i><i style="flex:0.54;background:#FFD600"></i></div>
+      <div class="bar" id="ratio-bar" aria-label="Measured colour split across the designs on this board"><i style="flex:86.83;background:#FFFFFF"></i><i style="flex:11.48;background:#121417"></i><i style="flex:0.16;background:#D4231B"></i><i style="flex:1.49;background:#006E30"></i><i style="flex:0.05;background:#FFD600"></i></div>
       <table id="ratio-table">
         <thead><tr><th>Colour</th><th>Target</th><th>Measured</th></tr></thead>
         <tbody>
-          <tr><td><i style="background:#FFFFFF"></i>Paper #FFFFFF</td><td>86%</td><td data-k="paper">87.09%</td></tr>
-          <tr><td><i style="background:#121417"></i>Ink #121417</td><td>10%</td><td data-k="ink">10.74%</td></tr>
-          <tr><td><i style="background:#D4231B"></i>Red #D4231B</td><td>[E] only</td><td data-k="red">0.15%</td></tr>
+          <tr><td><i style="background:#FFFFFF"></i>Paper #FFFFFF</td><td>86%</td><td data-k="paper">86.83%</td></tr>
+          <tr><td><i style="background:#121417"></i>Ink #121417</td><td>10%</td><td data-k="ink">11.48%</td></tr>
+          <tr><td><i style="background:#D4231B"></i>Red #D4231B</td><td>[E] only</td><td data-k="red">0.16%</td></tr>
           <tr><td><i style="background:#006E30"></i>Green #006E30</td><td>1.5%</td><td data-k="green">1.49%</td></tr>
-          <tr><td><i style="background:#FFD600"></i>Yellow #FFD600</td><td>0.5%</td><td data-k="yellow">0.54%</td></tr>
+          <tr><td><i style="background:#FFD600"></i>Yellow #FFD600</td><td>Trace</td><td data-k="yellow">0.05%</td></tr>
         </tbody>
       </table>
-      <p id="ratio-method" style="margin:0;font:12px/1.5 var(--mono);color:var(--grey)">Measured on the 26 designs on this board, each counted equally. Photo slots are excluded. Every pixel is split between the two palette colours it blends, so antialiased edges count fairly. Rendered in a headless browser at 1360 px wide, 20 November 2026. Red now marks only the [E] brackets, so its share is a trace by design. Weighted by pixel area instead, the large banners dominate: paper 92.5%, ink 6.1%, green 1.2%, yellow 0.19%, red 0.03%. Real photographs will add their own colour and are not part of these figures.</p>
+      <p id="ratio-method" style="margin:0;font:12px/1.5 var(--mono);color:var(--grey)">Measured on the 26 designs on this board, each counted equally. Photo slots are excluded. Every pixel is split between the two palette colours it blends, so antialiased edges count fairly. Rendered in a headless browser at 1360 px wide, 20 November 2026. Red marks only the [E] brackets, and the thinner yellow lines on black cards make yellow a trace too. Weighted by pixel area instead, the large banners dominate: paper 92.4%, ink 6.4%, green 1.2%, yellow 0.02%, red 0.04%. Real photographs will add their own colour and are not part of these figures.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px">
       <span class="label">Colour rules</span>
@@ -427,7 +430,7 @@ body{background:var(--board);color:var(--ink);font-family:var(--sys);margin:0}
   </section>
 
   <footer class="foot">
-    <span>Legal AI with Andrew E / Social board v3 / 20 November 2026 / Concept, not final artwork</span>
+    <span>Legal AI with Andrew E / Social board v4 / 20 November 2026 / Concept, not final artwork</span>
     <span>Copy from the Brand Statement and Audience Research (20 November 2026). "20+ years" is founder-supplied: confirm wording before publishing. Handles and domain unchecked.</span>
   </footer>
 </div>
